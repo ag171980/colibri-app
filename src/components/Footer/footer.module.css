@@ -1,0 +1,98 @@
+.footer {
+  border-top: 1px solid #dbdbdb;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.newsletter {
+  background-color: #f6f7fb;
+  width: 60%;
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.newsletter h3 {
+  font-size: 25px;
+  font-weight: normal;
+}
+.form {
+  /* margin-left: 40px; */
+}
+
+.form input {
+  width: 300px;
+  padding: 13px 12px;
+  border: 1px solid #dbdbdb;
+  outline: none;
+}
+
+.form > button {
+  width: 140px;
+  border: none;
+  outline: none;
+  margin: 20px auto;
+  background-color: #2a295f;
+  color: white;
+  text-decoration: none;
+  padding: 14px;
+  font-size: 14px;
+  transition: 0.5s all;
+}
+
+.bottomBar {
+  padding: 35px 0;
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.bottomBar > nav .itemBottom {
+  padding: 10px;
+  text-decoration: none;
+  color: #202020;
+  font-size: 16px;
+}
+.bottomBar .socials .social {
+  color: #202020;
+  font-size: 23px;
+  padding: 10px;
+}
+
+.terms {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 60%;
+  padding: 30px 0;
+}
+.terms span {
+  padding: 10px;
+}
+.terms .privacy .itemTerms {
+  padding: 10px;
+}
+
+.loader {
+  width: 13px;
+  height: 13px;
+  border: 1px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: scale(1.5) rotate(0deg);
+  }
+  100% {
+    transform: scale(1.5) rotate(360deg);
+  }
+}
