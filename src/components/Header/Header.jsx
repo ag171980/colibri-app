@@ -1,37 +1,45 @@
-import Logo from "../../assets/logo.png";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import headerStyle from "./header.module.css";
+import "./header.css";
+
+import Logo from "../../assets/logo.svg";
+import Menu from "../../assets/icons/menu.svg";
+
+import Language from "../Language/Language";
+import MenuMobile from "./MenuMobile";
 
 const Header = () => {
+  const [stateMenu, setStateMenu] = useState(false);
+
+  const showMenu = () => {
+    setStateMenu(!stateMenu);
+  };
   return (
-    <header className={headerStyle.Header}>
-      <div className={headerStyle.logo}>
+    <header className="header">
+      <button onClick={() => showMenu()} className="btn-menu">
+        <img src={Menu} alt="" />
+      </button>
+      <MenuMobile stateMenu={stateMenu} setStateMenu={setStateMenu} />
+      <div className="logo">
         <Link to="/">
           <img src={Logo} alt="" />
         </Link>
       </div>
-      <nav className={headerStyle.menu}>
-        <Link className={headerStyle.menuItem} to="/tienda">
-          Tienda
+      <nav className="menu">
+        <Link className="menu-item" to="/servicios">
+          Servicios
         </Link>
-        <Link className={headerStyle.menuItem} to="/tienda">
-          Servicio Técnico
+        <Link className="menu-item" to="/productos">
+          Productos
         </Link>
-        <Link className={headerStyle.menuItem} to="/tienda">
-          Ayuda
+        <Link className="menu-item" to="/reparacion">
+          Agendar reparación
         </Link>
-        <Link className={headerStyle.menuItem} to="/tienda">
-          Idioma
+        <Link className="menu-item" to="/faq">
+          Preguntas frecuentes
         </Link>
+        <Language />
       </nav>
-
-      <div className={headerStyle.user}>
-        <button>Ingresa</button>
-
-        <Link className={headerStyle.tracking} to="/seguimiento">
-          SEGUIMIENTO
-        </Link>
-      </div>
     </header>
   );
 };
