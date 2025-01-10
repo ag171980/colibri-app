@@ -5,7 +5,7 @@
 }
 
 .home {
-  background-image: url("/src/assets/background.png");
+  background-image: url('/src/assets/background.png');
   height: 90vh;
   width: 100%;
   background-repeat: no-repeat;
@@ -16,7 +16,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: "Poppins", serif;
+  font-family: 'Poppins', serif;
 }
 
 .home h2,
@@ -24,11 +24,90 @@
   color: white;
 }
 
-.home h2{
+.home h2 {
   font-size: 35px;
   font-weight: 500;
 }
-.home h1{
-  font-size: 60px;
+.home h1 {
+  font-size: 75px;
   font-weight: 600;
+}
+
+.home .btn-contact {
+  background-color: #00a87a;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 19px;
+  padding: 20px 32px;
+  width: 220px;
+  border-radius: 45px;
+  margin-top: 5vh;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+}
+
+.container-our-services {
+  padding: 120px 0;
+  font-family: 'Poppins', serif;
+}
+
+.container-our-services h2 {
+  font-size: 55px;
+  color: #2a295f;
+  font-weight: 600;
+}
+
+.container-our-services h3 {
+  font-size: 40px;
+  color: #00a87a;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-our-services h3 img {
+  position: relative;
+  top: 5px;
+  left: 10px;
+}
+
+.container-our-services > p {
+  color: #2a295f;
+  margin-top: 8vh;
+  font-size: 22px;
+}
+
+.container-our-services .services {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 15px;
+}
+
+.container-our-services .services .service {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0 20px;
+}
+
+.container-our-services .services .service .icon-service {
+  height: 100px;
+  display: flex;
+  align-items: flex-end;
+}
+.container-our-services .services .service h4 {
+  font-size: 30px;
+  color: #2a295f;
+  margin-top: 15px;
+}
+
+.container-our-services .services .service p{
+  padding: 15px 0;
 }
