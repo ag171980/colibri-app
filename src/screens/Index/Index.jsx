@@ -33,7 +33,7 @@ const Index = () => {
       <div className='container-index'>
         <div className='home'>
           <h2>Bienvenido/a a</h2>
-          <h1>Colibrí Premium Service</h1>
+          <h1>Colibrí <span>Premium Service</span></h1>
 
           <button className='btn-contact'>¡Contactános!</button>
         </div>
