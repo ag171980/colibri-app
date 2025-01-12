@@ -1,0 +1,116 @@
+.notable-products {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 0;
+}
+
+.notable-products > p {
+  font-size: 25px;
+  color: #2a295f;
+}
+
+.notable-products .carousel-products {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.notable-products .carousel-products .products {
+  width: 1260px;
+  overflow: hidden;
+}
+
+.notable-products .carousel-products .products .products-line {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  left: 0px;
+  transition: 0.5s all;
+}
+
+.notable-products .carousel-products .arrow {
+  border: none;
+  margin: 0 20px;
+  padding: 10px;
+  border-radius: 30px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+  background-color: #2a295f;
+  height: 60px;
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notable-products .carousel-products .arrow:hover {
+  cursor: pointer;
+}
+
+.notable-products .carousel-products .arrow.enabled {
+  background-color: #2a295f;
+}
+
+.notable-products .carousel-products .arrow.disabled {
+  background-color: #fefeff;
+}
+
+.notable-products .carousel-products .arrow-left {
+  transform: rotate(180deg);
+}
+
+.notable-products .carousel-products .arrow .inverted {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 1460px) {
+  .notable-products .carousel-products .products {
+    width: 1110px;
+  }
+}
+
+@media (max-width: 1310px) {
+  .notable-products .carousel-products .products {
+    width: 960px;
+  }
+  .notable-products .carousel-products .arrow {
+    margin: 0 10px;
+    height: 40px;
+    width: 40px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .notable-products .carousel-products .products {
+    width: 810px;
+  }
+}
+
+@media (max-width: 950px) {
+  .notable-products .carousel-products .products {
+    width: 540px;
+  }
+}
+
+@media (max-width: 660px) {
+  .notable-products .carousel-products .products {
+    width: 440px;
+  }
+}
+
+@media (max-width: 560px) {
+  .notable-products .carousel-products .products {
+    width: 90vw;
+  }
+  .notable-products .carousel-products .arrow {
+    display: none;
+  }
+  .notable-products .carousel-products .products .products-line {
+    scroll-snap-type: x mandatory;
+    overflow: scroll;
+  }
+}

@@ -5,7 +5,7 @@
 }
 
 .home {
-  background-image: url("/src/assets/background.png");
+  background-image: url('/src/assets/background.png');
   height: 90vh;
   width: 100%;
   background-repeat: no-repeat;
@@ -16,7 +16,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: "Poppins", serif;
+  font-family: 'Poppins', serif;
 }
 
 .home h2,
@@ -55,75 +55,41 @@
   background: white;
 }
 
-/* Our Services */
-.container-our-services {
-  padding: 120px 0;
-  font-family: "Poppins", serif;
+.container-notable-products {
+  padding: 40px 0;
+  font-family: 'Poppins', serif;
 }
-
-.container-our-services h2 {
+.container-notable-products h2 {
+  color: #2a295f;
   font-size: 55px;
-  color: #2a295f;
   font-weight: 600;
 }
 
-.container-our-services h3 {
-  font-size: 40px;
-  color: #00a87a;
-  font-weight: 600;
+.container-regards {
+  background-color: #f3f3f3;
+  height: 70vh;
+  font-family: 'Poppins', serif;
   display: flex;
-  align-items: center;
   justify-content: center;
-}
-
-.container-our-services h3 img {
-  position: relative;
-  top: 5px;
-  left: 10px;
-}
-
-.container-our-services > p {
-  color: #2a295f;
-  margin-top: 8vh;
-  font-size: 22px;
-}
-
-.container-our-services .services {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 15px;
-}
-
-.container-our-services .services .service {
-  width: 300px;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  margin: 0 25px;
 }
 
-.container-our-services .services .service .icon-service {
-  height: 100px;
-  display: flex;
-  align-items: flex-end;
+.container-regards .regards {
+  width: 68%;
+  margin: 0 auto;
 }
-.container-our-services .services .service h4 {
-  font-size: 30px;
+.container-regards .regards p {
+  text-align: center;
   color: #2a295f;
-  margin-top: 15px;
-}
-
-.container-our-services .services .service p {
-  padding: 15px 0;
+  font-size: 26px;
+  font-weight: 500;
 }
 
 @media (max-width: 1024px) {
   .home h2 {
     font-size: 30px;
   }
+
   .home h1 {
     margin-top: 5vh;
     font-size: 75px;
@@ -131,12 +97,45 @@
     display: flex;
     flex-direction: column;
   }
+
   .home h1 span {
     font-size: 35px;
   }
+
   .home .btn-contact {
     font-size: 17px;
     padding: 16px 24px;
     width: 200px;
+  }
+
+  .container-notable-products h2 {
+    font-size: 40px;
+  }
+
+  .container-regards .regards {
+    width: 80%;
+  }
+}
+@media (max-width: 768px) {
+  .container-regards .regards {
+    width: 90%;
+  }
+  .container-regards .regards p {
+    text-align: start;
+    font-size: 23px;
+  }
+}
+@media (max-width: 500px) {
+  .container-notable-products h2 {
+    font-size: 28px;
+  }
+
+  .container-regards {
+    height: auto;
+    padding: 50px 0;
+  }
+
+  .container-regards .regards p {
+    font-size: 18px;
   }
 }

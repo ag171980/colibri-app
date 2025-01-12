@@ -1,0 +1,90 @@
+.container-tyc h2 {
+  font-size: 50px;
+  margin: 4vh 0;
+  font-weight: 600;
+  color: #2a295f;
+  font-family: 'Poppins', serif;
+}
+
+.container-tyc .info {
+  background-color: white;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+  margin: 4vh auto;
+  width: 70%;
+  padding: 35px 60px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #2a295f;
+  font-family: 'Poppins', serif;
+}
+
+.info h4,
+.info p {
+  position: relative;
+  left: -25px;
+}
+
+.info h4 {
+  text-decoration: underline;
+  color: #2a295f;
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+.info p {
+  text-align: start;
+  color: #2a295f;
+  margin-bottom: 15px;
+}
+
+.info ol li {
+  color: #2a295f;
+  text-align: start;
+  font-size: 19px;
+  margin: 5px 0;
+}
+
+@media (max-width: 1440px) {
+  .container-tyc h2 {
+    font-size: 40px;
+  }
+
+  .container-tyc .info {
+    width: 85%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container-tyc h2 {
+    font-size: 35px;
+  }
+
+  .container-tyc .info {
+    width: 90%;
+  }
+  .info h4 {
+    font-size: 23px;
+  }
+
+  .info ol li {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-tyc h2 {
+    font-size: 30px;
+  }
+
+  .info h4 {
+    font-size: 21px;
+  }
+
+  .info ol li {
+    font-size: 15px;
+  }
+}

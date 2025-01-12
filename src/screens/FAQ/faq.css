@@ -1,0 +1,137 @@
+.faq {
+  font-family: 'Poppins', serif;
+  color: #2a295f;
+}
+
+.container-faq {
+  background: linear-gradient(
+    179.97deg,
+    rgba(117, 202, 179, 0.2) 15.73%,
+    rgba(255, 255, 255, 0.2) 89.27%
+  );
+  min-height: 60vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.container-faq .cloud {
+  position: absolute;
+  z-index: -1;
+}
+.container-faq .cloud.cloud-left {
+  bottom: 40px;
+  left: 0;
+}
+.container-faq .cloud.cloud-right {
+  top: 40px;
+  right: 0;
+}
+
+.container-faq .card-faq {
+  width: 60%;
+  background: #f8fffd;
+
+  border-radius: 25px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+  padding: 50px 30px;
+  margin: 8vh 0;
+}
+
+.container-faq .card-faq h1 {
+  font-size: 55px;
+  font-weight: 600;
+  color: #2a295f;
+  margin: 4vh 0;
+}
+
+.container-faq .card-faq .faq-item {
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 62%;
+}
+
+.container-faq .card-faq .faq-item h3 {
+  text-align: start;
+}
+.container-faq .card-faq .faq-item p {
+  text-align: start;
+}
+
+.container-faq .card-faq .btn-contact {
+  background-color: #00a87a;
+  color: white;
+  font-size: 19px;
+  font-weight: 300;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  width: 200px;
+  padding: 18px 24px;
+  margin: 6vh 0 2vh;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 1440px) {
+  .container-faq .card-faq {
+    width: 75%;
+    padding: 40px 30px;
+  }
+
+  .container-faq .card-faq h1 {
+    font-size: 45px;
+    margin: 2vh 0;
+  }
+
+  .container-faq .card-faq .faq-item {
+    width: 70%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container-faq .card-faq {
+    width: 80%;
+  }
+
+  .container-faq .card-faq h1 {
+    font-size: 40px;
+  }
+
+  .container-faq .card-faq .faq-item {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-faq .cloud.cloud-left {
+    left: -250px;
+  }
+  .container-faq .cloud.cloud-right {
+    right: -250px;
+  }
+  .container-faq .card-faq .faq-item {
+    width: 90%;
+  }
+}
+
+@media (max-width: 550px) {
+  .container-faq .card-faq {
+    width: 90%;
+  }
+
+  .container-faq .card-faq h1 {
+    font-size: 30px;
+  }
+
+  .container-faq .card-faq .faq-item {
+    width: 95%;
+  }
+}

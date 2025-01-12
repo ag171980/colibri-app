@@ -1,11 +1,13 @@
 import React from 'react'
 
-import IconPhoneTitle from '../../assets/icons/phone-title.svg'
 import IconIPhone from '../../assets/icons/iphone.svg'
 import IconMacbook from '../../assets/icons/macbook.svg'
 import IconIPad from '../../assets/icons/ipad.svg'
 import IconAppleWatch from '../../assets/icons/apple-watch.svg'
-const OurServices = () => {
+import IconPhoneTitle from '../../assets/icons/phone-title.svg'
+
+import './ourServices.css'
+const OurServices = ({ form }) => {
   const services = [
     {
       img: IconIPhone,
@@ -31,12 +33,29 @@ const OurServices = () => {
       description: 'Cambio de batería, cambio de pantalla, y cambio de glass'
     }
   ]
+  const consultDoubt = e => {
+    e.preventDefault()
+  }
   return (
     <div className='container-our-services'>
       <h2>Nuestros servicios</h2>
       <h3>
         Servicio puerta a puerta <img src={IconPhoneTitle} alt='' />
       </h3>
+      {form && (
+        <div className='form-doubt'>
+          <h4>Cuéntanos qué sucede</h4>
+          <form onSubmit={e => consultDoubt(e)}>
+            <input
+              type='text'
+              name='answer'
+              placeholder='Ejemplo: Mi iPhone no enciende'
+              required
+            />
+            <button type='submit'>Enviar</button>
+          </form>
+        </div>
+      )}
       <p>Reparaciones</p>
       <div className='services'>
         {services.map((service, key) => (
