@@ -5,6 +5,7 @@ const CardProduct = ({ product }) => {
   return (
     <div className='card-product'>
       <img src={product.img} alt='' />
+      <span>{product.category}</span>
       <a href={`/${product.category.toLowerCase()}/${product.id}`}>
         <h3>{product.title}</h3>
       </a>

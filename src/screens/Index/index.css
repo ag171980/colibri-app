@@ -86,6 +86,10 @@
 }
 
 @media (max-width: 1024px) {
+  .home {
+    height: 70vh;
+  }
+
   .home h2 {
     font-size: 30px;
   }
@@ -117,15 +121,37 @@
   }
 }
 @media (max-width: 768px) {
+  .home {
+    height: 55vh;
+  }
+
   .container-regards .regards {
     width: 90%;
   }
+
   .container-regards .regards p {
     text-align: start;
     font-size: 23px;
   }
 }
 @media (max-width: 500px) {
+  .home {
+    height: 50vh;
+  }
+
+  .home h2 {
+    font-size: 25px;
+  }
+
+  .home h1 {
+    font-size: 55px;
+    line-height: 55px;
+  }
+
+  .home h1 span {
+    font-size: 30px;
+  }
+
   .container-notable-products h2 {
     font-size: 28px;
   }

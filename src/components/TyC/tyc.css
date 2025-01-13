@@ -79,9 +79,16 @@
   .container-tyc h2 {
     font-size: 30px;
   }
+  .container-tyc .info{
+    padding: 35px 40px;
+  }
+.info h4, .info p{
 
+  left: -5px;
+}
   .info h4 {
     font-size: 21px;
+    text-align: start;
   }
 
   .info ol li {
