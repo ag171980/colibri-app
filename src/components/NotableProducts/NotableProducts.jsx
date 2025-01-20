@@ -11,7 +11,9 @@ const NotableProducts = ({ listProducts, categoryName }) => {
   const [posCarousel, setPosCarousel] = useState(0)
   const [pos, setPos] = useState(1)
   const [products] = useState(
-    listProducts.filter(product => product.category === categoryName)
+    categoryName
+      ? listProducts.filter(product => product.category === categoryName)
+      : listProducts
   )
 
   const [cantDivisions, setCantDivisions] = useState(

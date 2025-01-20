@@ -8,6 +8,7 @@ import Header from '../../components/Header/Header'
 
 import ArrowBlack from '../../assets/icons/arrow-black.svg'
 import RectangleExample from '../../assets/rectangle.svg'
+import { productService } from '../../services/product.service'
 const Products = () => {
   const [socials] = useState({
     wpp: 'https://api.whatsapp.com/send?phone=5491161670393&text=Hola%2C+buenas+tardes%21+Tengo+una+consulta',
@@ -22,7 +23,7 @@ const Products = () => {
     },
     {
       name: 'Auriculares / Audio',
-      value: 'auriculares'
+      value: 'audio'
     },
     {
       name: 'Cables',
@@ -33,200 +34,11 @@ const Products = () => {
       value: 'fundas'
     }
   ])
-  const [products, setProducts] = useState([
-    {
-      id: 1,
-      title: 'Cable lightning a usb de (1m)',
-      price: 30000,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      available: true,
-      category: 'cables',
-      img: RectangleExample
-    },
-    {
-      id: 2,
-      title: 'Cable lightning a usb de (1m)',
-      price: 30000,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      available: true,
-      category: 'cables',
-      img: RectangleExample
-    },
-    {
-      id: 3,
-      title: 'alimentacion lightning a usb de (1m)',
-      price: 30000,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      available: true,
-      category: 'alimentacion',
-      img: RectangleExample
-    },
-    {
-      id: 4,
-      title: 'auriculares lightning a usb de (1m)',
-      price: 30000,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      available: true,
-      category: 'auriculares',
-      img: RectangleExample
-    },
-    {
-      id: 5,
-      title: 'fundas lightning a usb de (1m)',
-      price: 30000,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      available: true,
-      category: 'fundas',
-      img: RectangleExample
-    },
-    {
-      id: 6,
-      title: 'Cable lightning a usb de (1m)',
-      price: 30000,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      available: true,
-      category: 'cables',
-      img: RectangleExample
-    },
-    {
-      id: 7,
-      title: 'Alimentacion (1m)',
-      price: 30000,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      available: true,
-      category: 'alimentacion',
-      img: RectangleExample
-    },
-    {
-      id: 5,
-      title: 'fundas lightning a usb de (1m)',
-      price: 30000,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      available: true,
-      category: 'fundas',
-      img: RectangleExample
-    },
-    {
-      id: 6,
-      title: 'Cable lightning a usb de (1m)',
-      price: 30000,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      available: true,
-      category: 'cables',
-      img: RectangleExample
-    },
-    {
-      id: 7,
-      title: 'Alimentacion (1m)',
-      price: 30000,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      available: true,
-      category: 'alimentacion',
-      img: RectangleExample
-    },
-    {
-      id: 5,
-      title: 'fundas lightning a usb de (1m)',
-      price: 30000,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      available: true,
-      category: 'fundas',
-      img: RectangleExample
-    },
-    {
-      id: 6,
-      title: 'Cable lightning a usb de (1m)',
-      price: 30000,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      available: true,
-      category: 'cables',
-      img: RectangleExample
-    },
-    {
-      id: 7,
-      title: 'Alimentacion (1m)',
-      price: 30000,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      available: true,
-      category: 'alimentacion',
-      img: RectangleExample
-    },
-    {
-      id: 5,
-      title: 'fundas lightning a usb de (1m)',
-      price: 30000,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      available: true,
-      category: 'fundas',
-      img: RectangleExample
-    },
-    {
-      id: 6,
-      title: 'Cable lightning a usb de (1m)',
-      price: 30000,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      available: true,
-      category: 'cables',
-      img: RectangleExample
-    },
-    {
-      id: 7,
-      title: 'Alimentacion (1m)',
-      price: 30000,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      available: true,
-      category: 'alimentacion',
-      img: RectangleExample
-    },
-    {
-      id: 5,
-      title: 'fundas lightning a usb de (1m)',
-      price: 30000,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      available: true,
-      category: 'fundas',
-      img: RectangleExample
-    },
-    {
-      id: 6,
-      title: 'Cable lightning a usb de (1m)',
-      price: 30000,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      available: true,
-      category: 'cables',
-      img: RectangleExample
-    },
-    {
-      id: 7,
-      title: 'Alimentacion (1m)',
-      price: 30000,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      available: true,
-      category: 'alimentacion',
-      img: RectangleExample
-    }
-  ])
+  const [loader, setLoader] = useState(false)
+  const [productsOriginal, setProductsOriginal] = useState([])
+  const [products, setProducts] = useState([])
 
-  const [pages, setPages] = useState(Math.ceil(products.length / 6))
+  const [pages, setPages] = useState(0)
   const [pageActual, setPageActual] = useState(1)
 
   const [filterActual, setFilterActual] = useState([])
@@ -248,6 +60,19 @@ const Products = () => {
 
   useEffect(() => {
     // hacer consulta a la base de datos con estos productos en esta pagina.
+
+    async function fetchData () {
+      const response = await productService.getAllProducts()
+      if (response.status === 200) {
+        setProducts(response.data.productos)
+        setProductsOriginal(response.data.productos)
+        setPages(response.data.cantPaginas)
+      }
+      setTimeout(() => {
+        setLoader(true)
+      }, 800)
+    }
+    fetchData()
   }, [pageActual])
 
   useEffect(() => {
@@ -256,7 +81,7 @@ const Products = () => {
 
       filterActual.map(filter => {
         let productsFiltereds = products.filter(
-          product => product.category === filter
+          product => product.categoria === filter
         )
 
         copyProducts.push(...productsFiltereds)
@@ -267,6 +92,7 @@ const Products = () => {
       setPageActual(1)
     } else {
       //buscamos todos los productos devuelta
+      setProducts(productsOriginal)
     }
   }, [filterActual])
   return (
