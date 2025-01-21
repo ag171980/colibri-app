@@ -1,0 +1,11 @@
+.header-login {
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .header-login img {
+    height: 90px;
+  }
+  

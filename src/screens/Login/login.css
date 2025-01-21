@@ -1,0 +1,39 @@
+.header-login {
+  height: 15vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-login img {
+  height: 90px;
+}
+
+.login {
+  background-color: #f3f1f1;
+  height: 85vh;
+  padding-top: 7vh;
+}
+
+.login form {
+  width: 40%;
+}
+
+.btn-login {
+  background-color: #00a87a;
+  border-radius: 50px;
+  padding: 12px 0;
+  width: 160px;
+}
+
+@media (max-width: 768px) {
+  .login form {
+    width: 70%;
+  }
+}
+
+@media (max-width: 500px) {
+  .login form {
+    width: 90%;
+  }
+}

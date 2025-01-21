@@ -1,0 +1,71 @@
+.index-pages {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 15px auto;
+  }
+  .index-pages > button {
+    margin: 0 12px;
+    background: none;
+    border: 1px solid #cfb53b;
+    border-radius: 15px;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s all;
+    height: 40px;
+    width: 40px;
+    position: relative;
+  }
+  
+  .index-pages > button:hover {
+    cursor: pointer;
+    background-color: #cfb53b;
+  }
+  
+  .index-pages > button img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .index-pages > button img:nth-child(2) {
+    opacity: 1;
+    transition: 0.5s all;
+  }
+  
+  .products-filters
+    .products-details
+    .index-pages
+    > button:hover
+    img:nth-child(2) {
+    opacity: 0;
+  }
+  .index-pages > button:nth-child(1) img {
+    transform: rotate(180deg) translateX(13px) translateY(10px);
+  }
+  
+  .index-pages .index-page {
+    margin: 0 12px;
+    padding: 10px 15px;
+    border: 1px solid #cfb53b;
+    color: #cfb53b;
+    border-radius: 15px;
+    transition: 0.5s all;
+  }
+  .index-pages .index-page.selected {
+    background-color: #cfb53b;
+    color: white;
+  }
+  .index-pages .index-page:hover {
+    cursor: pointer;
+    background-color: #cfb53b;
+    color: white;
+  }
+  .index-pages .index-page p {
+    font-size: 18px;
+  }
+  

@@ -1,0 +1,341 @@
+.container-modal-edit-product .modal-edit-product .body-modal .input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+  .container-modal-edit-product .modal-edit-product .body-modal .input label {
+    color: black;
+    font-weight: 500;
+    font-size: 16px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    padding: 8px 0;
+  }
+  
+  .container-modal-edit-product .modal-edit-product .body-modal .input input,
+  .container-modal-edit-product .modal-edit-product .body-modal .input select {
+    background-color: white;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    border: 2px solid #cfb53b;
+    padding: 8px 12px;
+    border-radius: 15px;
+    box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.15);
+  }
+  .container-modal-edit-product .modal-edit-product .body-modal .combo {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    border: 2px solid #cfb53b;
+    padding: 5px 15px;
+    border-radius: 15px;
+  }
+  .container-modal-edit-product
+    .modal-edit-product
+    .body-modal
+    .combo
+    .inputs-group
+    .input {
+    width: 30%;
+  }
+  
+  .container-modal-edit-product .modal-edit-product .body-modal .inputs-group {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .container-modal-edit-product
+    .modal-edit-product
+    .body-modal
+    .inputs-group
+    .input {
+    width: 48%;
+  }
+  
+  .container-modal-edit-product
+    .modal-edit-product
+    .body-modal
+    .combo
+    .create-set {
+    font-family: "Carrois Gothic", sans-serif;
+    font-size: 17px;
+    background-color: #cfb53b;
+    color: white;
+    width: 50%;
+    margin: 20px auto 5px;
+    padding: 7px 0;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.15);
+  }
+  
+  .container-modal-edit-product .modal-edit-product .body-modal .created-combos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .container-modal-edit-product
+    .modal-edit-product
+    .body-modal
+    .created-combos
+    label {
+    margin: 4px 0 7px;
+  }
+  
+  .container-modal-edit-product
+    .modal-edit-product
+    .body-modal
+    .created-combos
+    .combos {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    overflow-y: hidden;
+    white-space: nowrap;
+    width: 900px;
+    overflow-x: scroll;
+  }
+  
+  .container-modal-edit-product
+    .modal-edit-product
+    .body-modal
+    .created-combos
+    .combos
+    .combo {
+    border: 2px solid #cfb53b;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    padding: 8px 28px;
+    width: 120px;
+    border-radius: 15px;
+    position: relative;
+  }
+  
+  .container-modal-edit-product
+    .modal-edit-product
+    .body-modal
+    .created-combos
+    .combos
+    .combo
+    .delete-combo {
+    background-color: white;
+    border: 2px solid #cfb53b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+    border-radius: 30px;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+  }
+  
+  .container-modal-edit-product
+    .modal-edit-product
+    .body-modal
+    .created-combos
+    .combos
+    .combo
+    .delete-combo
+    img {
+    width: 13px;
+  }
+  
+  .container-modal-edit-product
+    .modal-edit-product
+    .body-modal
+    .created-combos
+    .combos
+    .combo
+    .color-selected {
+    font-size: 14px;
+  }
+  
+  .container-modal-edit-product
+    .modal-edit-product
+    .body-modal
+    .input-edit-image
+    .head-input-edit-image {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 15px 0;
+  }
+  
+  .container-modal-edit-product
+    .modal-edit-product
+    .body-modal
+    .input-edit-image
+    .head-input-edit-image
+    label {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 19px;
+    font-weight: bold;
+    margin-right: 15px;
+  }
+  
+  .inputfileedit {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+  
+  .inputfileedit + label {
+    max-width: 80%;
+    font-size: 16px;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 8px 24px;
+  }
+  
+  .inputfileedit + label svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    margin-right: 0.25em;
+  }
+  
+  .iborrainputfile {
+    font-size: 16px;
+    font-weight: normal;
+    font-family: "Carrois Gothic", sans-serif;
+  }
+  
+  .inputfileedit-1 + label {
+    color: #fff;
+    background-color: #cfb53b;
+    border-radius: 35px;
+  }
+  
+  .container-modal-edit-product
+    .modal-edit-product
+    .body-modal
+    .input-edit-image
+    .images-to-charge {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 7px 0;
+  }
+  
+  .container-modal-edit-product
+    .modal-edit-product
+    .body-modal
+    .input-edit-image
+    .images-to-charge
+    .image-preview {
+    position: relative;
+  }
+  .container-modal-edit-product
+    .modal-edit-product
+    .body-modal
+    .input-edit-image
+    .images-to-charge
+    .image-preview
+    .image-shadow {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: 0.4s all;
+  }
+  .container-modal-edit-product
+    .modal-edit-product
+    .body-modal
+    .input-edit-image
+    .images-to-charge
+    .image-preview:hover
+    .image-shadow {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .container-modal-edit-product
+    .modal-edit-product
+    .body-modal
+    .input-edit-image
+    .images-to-charge
+    .image-preview
+    .image-shadow
+    .delete-image {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    background-color: white;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container-modal-edit-product
+    .modal-edit-product
+    .body-modal
+    .input-edit-image
+    .images-to-charge
+    .image-preview
+    .image-shadow
+    .delete-image
+    img {
+    height: 20px;
+    width: 20px;
+    margin: 0 auto;
+  }
+  
+  .container-modal-edit-product
+    .modal-edit-product
+    .body-modal
+    .input-edit-image
+    .images-to-charge
+    .image-preview
+    img {
+    height: 150px;
+    width: 120px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .container-modal-edit-product .modal-edit-product .body-modal .btn-add-product {
+    font-family: "Carrois Gothic", sans-serif;
+    font-size: 17px;
+    background-color: #cfb53b;
+    color: white;
+    width: 100%;
+    margin: 20px auto 5px;
+    padding: 10px 0;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 1px 9px 0px rgba(0, 0, 0, 0.15);
+  }
+  
