@@ -101,13 +101,17 @@ const Products = () => {
       <div className='container-products'>
         <BtnWhatsapp linkWpp={socials.wpp} />
 
-        <h1>Productos</h1>
+        <h1 className='animate__animated animate__fadeIn animate__delay-01s'>
+          Productos
+        </h1>
 
         <div className='filters-products'>
           <div className='filters'>
-            <h2>Filtros</h2>
+            <h2 className='animate__animated animate__fadeIn animate__delay-02s'>Filtros</h2>
             {filters.map((filter, keyFilter) => (
-              <div key={keyFilter} className='filter-item'>
+              <div key={keyFilter} className={`filter-item animate__animated animate__fadeIn animate__delay-0${
+                keyFilter + 1
+              }s`}>
                 <input
                   type='checkbox'
                   name='filter'

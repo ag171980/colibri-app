@@ -17,9 +17,9 @@ const FAQ = () => {
       <Header />
       <div className='container-faq'>
         <BtnWhatsapp linkWpp={socials.wpp} />
-        <img className='cloud cloud-left' src={CloudLeft} alt='' />
-        <img className='cloud cloud-right' src={CloudRight} alt='' />
-        <div className='card-faq'>
+        <img className='cloud cloud-left animate__animated animate__fadeIn animate__delay-01s' src={CloudLeft} alt='' />
+        <img className='cloud cloud-right animate__animated animate__fadeIn animate__delay-02s' src={CloudRight} alt='' />
+        <div className='card-faq animate__animated animate__fadeIn animate__delay-03s'>
           <h1>Preguntas frecuentes</h1>
           <div className='faq-item'>
             <h3>¿Cuál es el tiempo de demora estimado de reparación? </h3>

@@ -15,7 +15,7 @@ const Language = () => {
     showModalLanguage();
   };
   return (
-    <div className="language">
+    <div className="language animate__animated animate__fadeIn animate__delay-05s">
       <img src={Globe} alt="" />
       <p>{languageActual}</p>
       <img onClick={() => showModalLanguage()} src={ArrowDown} alt="" />

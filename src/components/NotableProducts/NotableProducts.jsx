@@ -7,12 +7,13 @@ import ArrowBlack from '../../assets/icons/arrow-black.svg'
 import './notableProducts.css'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 const NotableProducts = ({ listProducts, categoryName }) => {
+  
   const { width } = useWindowDimensions()
   const [posCarousel, setPosCarousel] = useState(0)
   const [pos, setPos] = useState(1)
   const [products] = useState(
     categoryName
-      ? listProducts.filter(product => product.category === categoryName)
+      ? listProducts.filter(product => product.categoria === categoryName)
       : listProducts
   )
 

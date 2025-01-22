@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import IconIPhone from '../../assets/icons/iphone.svg'
 import IconMacbook from '../../assets/icons/macbook.svg'
@@ -8,6 +8,7 @@ import IconPhoneTitle from '../../assets/icons/phone-title.svg'
 
 import './ourServices.css'
 const OurServices = ({ form }) => {
+  const [consult, setConsult] = useState('')
   const services = [
     {
       img: IconIPhone,
@@ -35,31 +36,53 @@ const OurServices = ({ form }) => {
   ]
   const consultDoubt = e => {
     e.preventDefault()
+    window.open(
+      `https://api.whatsapp.com/send?phone=5491161670393&text=Hola%2C+buenas+tardes%21+Tengo+una+consulta%3A%20${consult}`,
+      '_blank'
+    )
   }
   return (
     <div className='container-our-services'>
-      <h2>Nuestros servicios</h2>
-      <h3>
+      <h2 className='animate__animated animate__fadeIn animate__delay-01s'>
+        Nuestros servicios
+      </h2>
+      <h3 className='animate__animated animate__fadeIn animate__delay-02s'>
         Servicio puerta a puerta <img src={IconPhoneTitle} alt='' />
       </h3>
       {form && (
         <div className='form-doubt'>
-          <h4>Cuéntanos qué sucede</h4>
+          <h4 className='animate__animated animate__fadeIn animate__delay-03s'>
+            Cuéntanos qué sucede
+          </h4>
           <form onSubmit={e => consultDoubt(e)}>
             <input
+              onChange={e => setConsult(e.target.value)}
+              className='animate__animated animate__fadeIn animate__delay-03s'
               type='text'
               name='answer'
               placeholder='Ejemplo: Mi iPhone no enciende'
               required
             />
-            <button type='submit'>Enviar</button>
+            <button
+              type='submit'
+              className='animate__animated animate__fadeIn animate__delay-04s'
+            >
+              Enviar
+            </button>
           </form>
         </div>
       )}
-      <p>Reparaciones</p>
+      <p className='animate__animated animate__fadeIn animate__delay-04s'>
+        Reparaciones
+      </p>
       <div className='services'>
         {services.map((service, key) => (
-          <div key={key} className='service'>
+          <div
+            key={key}
+            className={`service animate__animated animate__fadeIn animate__delay-0${
+              key + 1
+            }s`}
+          >
             <div className='icon-service'>
               <img src={service.img} alt='' />
             </div>

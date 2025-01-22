@@ -4,7 +4,7 @@ import './cardProduct.css'
 const CardProduct = ({ product }) => {
   return (
     <div
-      className={`card-product animate__animated animate__fadeInUp animate__delay-0${product.id}s`}
+      className={`card-product animate__animated animate__fadeIn animate__delay-0${product.id}s`}
     >
       <img
         src={product?.imagen?.length > 0 ? product.imagen[0] : RectangleExample}

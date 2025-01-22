@@ -20,22 +20,22 @@ const Header = () => {
         <img src={Menu} alt="" />
       </button>
       <MenuMobile stateMenu={stateMenu} setStateMenu={setStateMenu} />
-      <div className="logo">
+      <div className="logo animate__animated animate__fadeIn animate__delay-01s">
         <Link to="/">
           <img src={Logo} alt="" />
         </Link>
       </div>
       <nav className="menu">
-        <Link className="menu-item" to="/servicios">
+        <Link className="menu-item animate__animated animate__fadeIn animate__delay-01s" to="/servicios">
           Servicios
         </Link>
-        <Link className="menu-item" to="/productos">
+        <Link className="menu-item animate__animated animate__fadeIn animate__delay-02s" to="/productos">
           Productos
         </Link>
-        <Link className="menu-item" to="/reparacion">
+        <Link className="menu-item animate__animated animate__fadeIn animate__delay-03s" to="/reparacion">
           Agendar reparación
         </Link>
-        <Link className="menu-item" to="/faq">
+        <Link className="menu-item animate__animated animate__fadeIn animate__delay-04s" to="/faq">
           Preguntas frecuentes
         </Link>
         <Language />

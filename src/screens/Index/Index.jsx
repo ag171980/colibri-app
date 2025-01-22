@@ -8,7 +8,8 @@ import OurServices from './OurServices'
 import NotableProducts from '../../components/NotableProducts/NotableProducts'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 import BtnWhatsapp from '../../components/BtnWhatsapp/BtnWhatsapp'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { productService } from '../../services/product.service'
 
 const Index = () => {
   const { width } = useWindowDimensions()
@@ -17,32 +18,50 @@ const Index = () => {
     ig: 'https://www.instagram.com/colibri_premium/',
     fb: ''
   })
-  const products = []
+  const [loader, setLoader] = useState(false)
+  const [pages, setPages] = useState(0)
+  const [products, setProducts] = useState(undefined)
+  const [productsOriginal, setProductsOriginal] = useState([])
+
+  useEffect(() => {
+    async function fetchData () {
+      const response = await productService.getAllProducts()
+      if (response.status === 200) {
+        setProducts(response.data.productos)
+        setProductsOriginal(response.data.productos)
+        setPages(response.data.cantPaginas)
+      }
+      setTimeout(() => {
+        setLoader(true)
+      }, 800)
+    }
+    fetchData()
+  }, [])
   return (
     <div className='index'>
       <Header />
       <div className='container-index'>
         <BtnWhatsapp linkWpp={socials.wpp} />
         <div className='home'>
-          <h2>Bienvenido/a a</h2>
-          <h1>
+          <h2 className='animate__animated animate__fadeIn animate__delay-01s'>Bienvenido/a a</h2>
+          <h1 className='animate__animated animate__fadeIn animate__delay-02s'>
             Colibrí <span>Premium Service</span>
           </h1>
 
-          <button className='btn-contact'>¡Contactános!</button>
+          <button className='btn-contact animate__animated animate__fadeIn animate__delay-03s'>¡Contactános!</button>
         </div>
 
         <OurServices form={false} />
 
         <div className='container-notable-products'>
-          <h2>Productos Destacados</h2>
+          <h2 className='animate__animated animate__fadeIn animate__delay-01s'>Productos Destacados</h2>
           {/* <NotableProducts listProducts={products} categoryName={'Fundas'} /> */}
 
-          <NotableProducts listProducts={products} categoryName={'Cables'} />
+          {products && <NotableProducts listProducts={products} categoryName={'fundas'} />}
         </div>
         <div className='container-regards'>
           <div className='regards'>
-            <p>
+            <p className='animate__animated animate__fadeIn animate__delay-01s'>
               Gracias por confiar en nosotros para las necesidades de reparación
               y accesorios de tus dispositivos.{' '}
               {width < 768 ? (

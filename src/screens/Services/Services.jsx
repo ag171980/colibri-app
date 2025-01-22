@@ -19,9 +19,9 @@ const Services = () => {
       <Header />
       <div className='container-services'>
         <BtnWhatsapp linkWpp={socials.wpp} />
-        <img className='cloud cloud-left' src={Cloud1} alt='' />
+        <img className='cloud cloud-left animate__animated animate__fadeIn animate__delay-01s' src={Cloud1} alt='' />
         <OurServices form={true} />
-        <img className='cloud cloud-right' src={Cloud2} alt='' />
+        <img className='cloud cloud-right animate__animated animate__fadeIn animate__delay-01s' src={Cloud2} alt='' />
       </div>
 
       <TyC />

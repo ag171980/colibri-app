@@ -4,8 +4,8 @@ import './tyc.css'
 const TyC = () => {
   return (
     <div className='container-tyc'>
-      <h2>Términos y condiciones</h2>
-      <div className='info info-repairs'>
+      <h2 className='animate__animated animate__fadeIn animate__delay-01s'>Términos y condiciones</h2>
+      <div className='info info-repairs animate__animated animate__fadeIn animate__delay-02s'>
         <h4>Información importante para Reparaciones</h4>
         <ol>
           <li>
@@ -39,7 +39,7 @@ const TyC = () => {
         </ol>
       </div>
 
-      <div className='info time-repairs'>
+      <div className='info time-repairs animate__animated animate__fadeIn animate__delay-03s'>
         <h4>Tiempos de Reparación</h4>
         <p>
           En Colibri Premium Service, nos esforzamos por hacer tu vida más
@@ -65,7 +65,7 @@ const TyC = () => {
         </ol>
       </div>
 
-      <div className='info requests'>
+      <div className='info requests animate__animated animate__fadeIn animate__delay-04s'>
         <h4>Requisitos de Ingreso</h4>
         <p>
           Todos los equipos deben ingresar con su código IMEI / número de serie

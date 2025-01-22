@@ -50,7 +50,9 @@ const Product = () => {
         </a>
         <BtnWhatsapp linkWpp={socials.wpp} />
 
-        <h1>Productos</h1>
+        <h1 className='animate__animated animate__fadeIn animate__delay-01s'>
+          Productos
+        </h1>
 
         {!loader && <Loader />}
         {loader && (
@@ -60,6 +62,7 @@ const Product = () => {
                 {product.imagen.length > 0 &&
                   product.imagen.map((img, keyImg) => (
                     <img
+                      className='animate__animated animate__fadeIn animate__delay-01s'
                       key={keyImg}
                       src={img ? img : RectangleExample}
                       alt=''
@@ -67,35 +70,47 @@ const Product = () => {
                   ))}
                 {product.imagen.length === 0 && (
                   <>
-                    <img src={RectangleExample} alt='' />
-                    <img src={RectangleExample} alt='' />
-                    <img src={RectangleExample} alt='' />
+                    <img
+                      className='animate__animated animate__fadeIn animate__delay-02s'
+                      src={RectangleExample}
+                      alt=''
+                    />
+                    <img
+                      className='animate__animated animate__fadeIn animate__delay-03s'
+                      src={RectangleExample}
+                      alt=''
+                    />
+                    <img
+                      className='animate__animated animate__fadeIn animate__delay-04s'
+                      src={RectangleExample}
+                      alt=''
+                    />
                   </>
                 )}
               </div>
               <img
-                className='principal'
+                className='principal animate__animated animate__fadeIn animate__delay-01s'
                 src={product.imagen[0] ? product.imagen[0] : RectangleExample}
                 alt=''
               />
             </div>
             <div className='description-product'>
-              <h2>{product.nombre}</h2>
+              <h2 className='animate__animated animate__fadeIn animate__delay-02s'>{product.nombre}</h2>
               <NumberFormat
-                className='price'
+                className='price animate__animated animate__fadeIn animate__delay-02s'
                 value={product.precio}
                 thousandSeparator='.'
                 decimalSeparator=','
                 disabled
                 prefix='$'
               />
-              <div className='free-shipping'>
+              <div className='free-shipping animate__animated animate__fadeIn animate__delay-03s'>
                 <p>Envío gratis</p>
               </div>
-              <h4>Descripción del producto</h4>
-              <p className='description'>{product.descripcion}</p>
+              <h4 className='animate__animated animate__fadeIn animate__delay-04s'>Descripción del producto</h4>
+              <p className='description animate__animated animate__fadeIn animate__delay-05s'>{product.descripcion}</p>
 
-              <button type='button' disabled className='btn-buy'>
+              <button type='button' disabled className='btn-buy animate__animated animate__fadeIn animate__delay-06s'>
                 Comprar
               </button>
             </div>
