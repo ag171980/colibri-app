@@ -1,16 +1,16 @@
-import './index.css'
-
-import RectangleExample from '../../assets/rectangle.svg'
-
-import Header from '../../components/Header/Header'
+import { useEffect, useState } from 'react'
+// components
+import BtnWhatsapp from '../../components/BtnWhatsapp/BtnWhatsapp'
 import Footer from '../../components/Footer/Footer'
+import Header from '../../components/Header/Header'
 import OurServices from './OurServices'
 import NotableProducts from '../../components/NotableProducts/NotableProducts'
+// hooks
 import useWindowDimensions from '../../hooks/useWindowDimensions'
-import BtnWhatsapp from '../../components/BtnWhatsapp/BtnWhatsapp'
-import { useEffect, useState } from 'react'
+// services
 import { productService } from '../../services/product.service'
-
+// styles
+import './index.css'
 const Index = () => {
   const { width } = useWindowDimensions()
   const [socials] = useState({
@@ -43,21 +43,33 @@ const Index = () => {
       <div className='container-index'>
         <BtnWhatsapp linkWpp={socials.wpp} />
         <div className='home'>
-          <h2 className='animate__animated animate__fadeIn animate__delay-01s'>Bienvenido/a a</h2>
+          <h2 className='animate__animated animate__fadeIn animate__delay-01s'>
+            Bienvenido/a a
+          </h2>
           <h1 className='animate__animated animate__fadeIn animate__delay-02s'>
             Colibrí <span>Premium Service</span>
           </h1>
 
-          <button className='btn-contact animate__animated animate__fadeIn animate__delay-03s'>¡Contactános!</button>
+          <a
+            href={socials.wpp}
+            target='_blank'
+            className='btn-contact animate__animated animate__fadeIn animate__delay-03s'
+          >
+            ¡Contactános!
+          </a>
         </div>
 
         <OurServices form={false} />
 
         <div className='container-notable-products'>
-          <h2 className='animate__animated animate__fadeIn animate__delay-01s'>Productos Destacados</h2>
+          <h2 className='animate__animated animate__fadeIn animate__delay-01s'>
+            Productos Destacados
+          </h2>
           {/* <NotableProducts listProducts={products} categoryName={'Fundas'} /> */}
 
-          {products && <NotableProducts listProducts={products} categoryName={'fundas'} />}
+          {products && (
+            <NotableProducts listProducts={products} categoryName={'fundas'} />
+          )}
         </div>
         <div className='container-regards'>
           <div className='regards'>

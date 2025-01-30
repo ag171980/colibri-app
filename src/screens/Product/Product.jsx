@@ -27,18 +27,19 @@ const Product = () => {
   const [productsRecommendeds, setProductsRecommendeds] = useState([])
   const [product, setProduct] = useState(undefined)
 
-  useEffect(() => {
-    async function fetchData () {
-      const response = await productService.getProductById(path.id)
-      if (response.status === 200) {
-        setProduct(response.data.producto)
-      } else {
-      }
-      setTimeout(() => {
-        setLoader(true)
-      }, 800)
+  const getProductById = async () => {
+    const response = await productService.getProductById(path.id)
+    if (response.status === 200) {
+      setProduct(response.data.producto)
     }
-    fetchData()
+    setTimeout(() => {
+      setLoader(true)
+    }, 800)
+  }
+
+  const addCart = () => {}
+  useEffect(() => {
+    getProductById()
   }, [])
   return (
     <div className='product'>
@@ -95,7 +96,9 @@ const Product = () => {
               />
             </div>
             <div className='description-product'>
-              <h2 className='animate__animated animate__fadeIn animate__delay-02s'>{product.nombre}</h2>
+              <h2 className='animate__animated animate__fadeIn animate__delay-02s'>
+                {product.nombre}
+              </h2>
               <NumberFormat
                 className='price animate__animated animate__fadeIn animate__delay-02s'
                 value={product.precio}
@@ -107,11 +110,20 @@ const Product = () => {
               <div className='free-shipping animate__animated animate__fadeIn animate__delay-03s'>
                 <p>Envío gratis</p>
               </div>
-              <h4 className='animate__animated animate__fadeIn animate__delay-04s'>Descripción del producto</h4>
-              <p className='description animate__animated animate__fadeIn animate__delay-05s'>{product.descripcion}</p>
+              <h4 className='animate__animated animate__fadeIn animate__delay-04s'>
+                Descripción del producto
+              </h4>
+              <p className='description animate__animated animate__fadeIn animate__delay-05s'>
+                {product.descripcion}
+              </p>
 
-              <button type='button' disabled className='btn-buy animate__animated animate__fadeIn animate__delay-06s'>
-                Comprar
+              <button
+                onClick={() => addCart()}
+                type='button'
+                disabled
+                className='btn-buy animate__animated animate__fadeIn animate__delay-06s'
+              >
+                Agregar
               </button>
             </div>
           </div>

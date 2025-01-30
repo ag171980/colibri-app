@@ -63,7 +63,7 @@ const Products = () => {
   };
 
   if (!firstLoad) {
-    getAllProducts();
+    getAllProducts(1);
   }
 
   const showSidebar = () => {
@@ -125,7 +125,7 @@ const Products = () => {
   };
 
   useEffect(() => {
-    getAllProducts();
+    getAllProducts(1);
   }, [pageActual]);
   useEffect(() => {}, [productEdit]);
   return (

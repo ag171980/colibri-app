@@ -32,9 +32,9 @@ const Header = () => {
         <Link className="menu-item animate__animated animate__fadeIn animate__delay-02s" to="/productos">
           Productos
         </Link>
-        <Link className="menu-item animate__animated animate__fadeIn animate__delay-03s" to="/reparacion">
+        {/* <Link className="menu-item animate__animated animate__fadeIn animate__delay-03s" to="/reparacion">
           Agendar reparación
-        </Link>
+        </Link> */}
         <Link className="menu-item animate__animated animate__fadeIn animate__delay-04s" to="/faq">
           Preguntas frecuentes
         </Link>

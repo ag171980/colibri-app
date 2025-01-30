@@ -58,41 +58,49 @@ const Products = () => {
     }
   }
 
+  const getProducts = async () => {
+    const response = await productService.getAllProducts(pageActual)
+    if (response.status === 200) {
+      setProducts(response.data.productos)
+      setPages(response.data.cantPaginas)
+    }
+    setTimeout(() => {
+      setLoader(true)
+    }, 800)
+  }
+
+  const getProductByCategory = async () => {
+    const response = await productService.getProductsByCategory(
+      filterActual,
+      pageActual
+    )
+
+    if (response.status === 200) {
+      setProducts(response.data.productos)
+      setPages(response.data.cantPaginas)
+    }
+    setTimeout(() => {
+      setLoader(true)
+    }, 800)
+  }
+
   useEffect(() => {
     // hacer consulta a la base de datos con estos productos en esta pagina.
 
-    async function fetchData () {
-      const response = await productService.getAllProducts()
-      if (response.status === 200) {
-        setProducts(response.data.productos)
-        setProductsOriginal(response.data.productos)
-        setPages(response.data.cantPaginas)
-      }
-      setTimeout(() => {
-        setLoader(true)
-      }, 800)
+    if (filterActual.length > 0) {
+      getProductByCategory()
+    } else {
+      getProducts()
     }
-    fetchData()
   }, [pageActual])
 
   useEffect(() => {
     if (filterActual.length > 0) {
-      let copyProducts = []
-
-      filterActual.map(filter => {
-        let productsFiltereds = products.filter(
-          product => product.categoria === filter
-        )
-
-        copyProducts.push(...productsFiltereds)
-      })
-
-      setProducts(copyProducts)
-      setPages(Math.ceil(copyProducts.length / 6))
-      setPageActual(1)
+      getProductByCategory()
     } else {
+      setPageActual(1)
       //buscamos todos los productos devuelta
-      setProducts(productsOriginal)
+      getProducts()
     }
   }, [filterActual])
   return (
@@ -107,11 +115,16 @@ const Products = () => {
 
         <div className='filters-products'>
           <div className='filters'>
-            <h2 className='animate__animated animate__fadeIn animate__delay-02s'>Filtros</h2>
+            <h2 className='animate__animated animate__fadeIn animate__delay-02s'>
+              Filtros
+            </h2>
             {filters.map((filter, keyFilter) => (
-              <div key={keyFilter} className={`filter-item animate__animated animate__fadeIn animate__delay-0${
-                keyFilter + 1
-              }s`}>
+              <div
+                key={keyFilter}
+                className={`filter-item animate__animated animate__fadeIn animate__delay-0${
+                  keyFilter + 1
+                }s`}
+              >
                 <input
                   type='checkbox'
                   name='filter'
@@ -130,14 +143,15 @@ const Products = () => {
               ))}
             </div>
             <div className='pagination'>
-              <button
-                className='arrows'
-                onClick={() => setPageActual(pageActual - 1)}
-                disabled={pageActual === 1}
-              >
-                <img src={ArrowBlack} alt='' />
-              </button>
-
+              {pageActual !== 1 && (
+                <button
+                  className='arrows'
+                  onClick={() => setPageActual(pageActual - 1)}
+                  disabled={pageActual === 1}
+                >
+                  <img src={ArrowBlack} alt='' />
+                </button>
+              )}
               {Array.from({ length: pages }).map((_, keyPage) => (
                 <div
                   key={keyPage}
@@ -150,7 +164,7 @@ const Products = () => {
                 </div>
               ))}
 
-              {pages > 3 && (
+              {pages > 1 && (
                 <button
                   className='arrows'
                   onClick={() => setPageActual(pageActual + 1)}
