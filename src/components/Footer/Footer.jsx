@@ -8,9 +8,15 @@ import WhatsappIcon from '../../assets/icons/whatsapp.svg'
 const Footer = ({ socials }) => {
   return (
     <footer className='footer'>
-      <img className='animate__animated animate__fadeIn animate__delay-01s' src={LogoColibri} alt='' />
+      <img
+        className='animate__animated animate__fadeIn animate__delay-01s'
+        src={LogoColibri}
+        alt=''
+      />
       <div className='footer-info'>
-        <p className='animate__animated animate__fadeIn animate__delay-01s'>Copyright © 2024 Colibrí Premium Service</p>
+        <p className='animate__animated animate__fadeIn animate__delay-01s'>
+          Copyright © 2025 Colibrí Premium Service
+        </p>
         <div className='socials'>
           <a
             href={socials.fb}

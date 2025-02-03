@@ -3,7 +3,7 @@
   color: #2a295f;
 }
 
-.container-faq {
+.containerFaq {
   background: linear-gradient(
     179.97deg,
     rgba(117, 202, 179, 0.2) 15.73%,
@@ -17,20 +17,20 @@
   overflow: hidden;
 }
 
-.container-faq .cloud {
+.containerFaq .cloud {
   position: absolute;
   z-index: -1;
 }
-.container-faq .cloud.cloud-left {
+.containerFaq .cloud.cloudLeft {
   bottom: 40px;
   left: 0;
 }
-.container-faq .cloud.cloud-right {
+.containerFaq .cloud.cloudRight {
   top: 40px;
   right: 0;
 }
 
-.container-faq .card-faq {
+.containerFaq .cardFaq {
   width: 60%;
   background: #f8fffd;
 
@@ -42,14 +42,14 @@
   margin: 8vh 0;
 }
 
-.container-faq .card-faq h1 {
+.containerFaq .cardFaq h1 {
   font-size: 55px;
   font-weight: 600;
   color: #2a295f;
   margin: 4vh 0;
 }
 
-.container-faq .card-faq .faq-item {
+.containerFaq .cardFaq .faqItem {
   margin: 20px auto;
   display: flex;
   flex-direction: column;
@@ -57,14 +57,14 @@
   width: 62%;
 }
 
-.container-faq .card-faq .faq-item h3 {
+.containerFaq .cardFaq .faqItem h3 {
   text-align: start;
 }
-.container-faq .card-faq .faq-item p {
+.containerFaq .cardFaq .faqItem p {
   text-align: start;
 }
 
-.container-faq .card-faq .btn-contact {
+.containerFaq .cardFaq .btnContact {
   background-color: #00a87a;
   color: white;
   font-size: 19px;
@@ -81,57 +81,57 @@
 }
 
 @media (max-width: 1440px) {
-  .container-faq .card-faq {
+  .containerFaq .cardFaq {
     width: 75%;
     padding: 40px 30px;
   }
 
-  .container-faq .card-faq h1 {
+  .containerFaq .cardFaq h1 {
     font-size: 45px;
     margin: 2vh 0;
   }
 
-  .container-faq .card-faq .faq-item {
+  .containerFaq .cardFaq .faqItem {
     width: 70%;
   }
 }
 
 @media (max-width: 1024px) {
-  .container-faq .card-faq {
+  .containerFaq .cardFaq {
     width: 80%;
   }
 
-  .container-faq .card-faq h1 {
+  .containerFaq .cardFaq h1 {
     font-size: 40px;
   }
 
-  .container-faq .card-faq .faq-item {
+  .containerFaq .cardFaq .faqItem {
     width: 80%;
   }
 }
 
 @media (max-width: 768px) {
-  .container-faq .cloud.cloud-left {
+  .containerFaq .cloud.cloudLeft {
     left: -250px;
   }
-  .container-faq .cloud.cloud-right {
+  .containerFaq .cloud.cloudRight {
     right: -250px;
   }
-  .container-faq .card-faq .faq-item {
+  .containerFaq .cardFaq .faqItem {
     width: 90%;
   }
 }
 
 @media (max-width: 550px) {
-  .container-faq .card-faq {
+  .containerFaq .cardFaq {
     width: 90%;
   }
 
-  .container-faq .card-faq h1 {
+  .containerFaq .cardFaq h1 {
     font-size: 30px;
   }
 
-  .container-faq .card-faq .faq-item {
+  .containerFaq .cardFaq .faqItem {
     width: 95%;
   }
 }
