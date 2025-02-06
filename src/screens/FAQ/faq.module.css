@@ -66,6 +66,7 @@
 
 .containerFaq .cardFaq .btnContact {
   background-color: #00a87a;
+  text-decoration: none;
   color: white;
   font-size: 19px;
   font-weight: 300;

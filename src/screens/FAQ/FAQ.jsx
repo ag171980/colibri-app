@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import FaqCSS from './faq.module.css'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
@@ -7,33 +8,26 @@ import BtnWhatsapp from '../../components/BtnWhatsapp/BtnWhatsapp'
 import CloudLeft from '../../assets/cloud.svg'
 import CloudRight from '../../assets/cloud-right.svg'
 import { Link } from 'react-router-dom'
+import { initService } from '../../services/init.service'
 const FAQ = () => {
+  const [faqs, setFaqs] = useState([])
   const [socials] = useState({
     wpp: 'https://api.whatsapp.com/send?phone=5491161670393&text=Hola%2C+buenas+tardes%21+Tengo+una+consulta',
     ig: 'https://www.instagram.com/colibri_premium/',
     fb: ''
   })
 
-  const faqs = [
-    {
-      id: 1,
-      title: '¿Cuál es el tiempo de demora estimado de reparación?',
-      description:
-        'El tiempo estimado en las reparaciones de falla comunes demoran 24/72hs dentro del horario habil de trabajo, esto aplica a iPhone, Macbook, iPad, Apple Watch. El tiempo estimado de los cambio y reparaciones de perifericos demora 24/48hs dentro del horario habil de trabajo.'
-    },
-    {
-      id: 2,
-      title: '¿Qué tipo de garantía obtengo en mis reparaciones?',
-      description:
-        'La garantía cubre únicamente las fallas reparadas por Colibri Premium Service. No nos responsabilizamos por reparaciones realizadas por terceros.'
-    },
-    {
-      id: 3,
-      title: '¿⁠Ofrecen servicio en un sitio físico o sólo con envíos?',
-      description:
-        'Hasta la actualidad trabajamos con servicio de logística y envío. Y reparaciones en el momento con turno previo, estamos ubicados en Palermo, Buenos Aires CABA. Contactanos para agendar tu reparación.'
-    }
-  ]
+  const getFaqs = async () => {
+    const response = await initService.getFaqs()
+    console.log(response.data)
+
+    setFaqs(response.data)
+  }
+
+  useEffect(() => {
+    getFaqs()
+  }, [])
+
   return (
     <div className={FaqCSS.faq}>
       <Header />
@@ -55,8 +49,8 @@ const FAQ = () => {
           <h1>Preguntas frecuentes</h1>
           {faqs.map((faq, keyFaq) => (
             <div key={keyFaq} className={FaqCSS.faqItem}>
-              <h3>{faq.title}</h3>
-              <p>{faq.description}</p>
+              <h3>{faq.titulo}</h3>
+              <p>{faq.respuesta}</p>
             </div>
           ))}
 

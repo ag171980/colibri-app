@@ -25,7 +25,7 @@ const Index = () => {
 
   useEffect(() => {
     async function fetchData () {
-      const response = await productService.getAllProducts()
+      const response = await productService.getAllProducts(1)
       if (response.status === 200) {
         setProducts(response.data.productos)
         setProductsOriginal(response.data.productos)
