@@ -4,7 +4,7 @@ import './tyc.css'
 const TyC = () => {
   return (
     <div className='container-tyc'>
-      <h2 className='animate__animated animate__fadeIn animate__delay-01s'>Términos y condiciones</h2>
+      <h2 id='tyc' className='animate__animated animate__fadeIn animate__delay-01s'>Términos y condiciones</h2>
       <div className='info info-repairs animate__animated animate__fadeIn animate__delay-02s'>
         <h4>Información importante para Reparaciones</h4>
         <ol>

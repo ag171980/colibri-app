@@ -1,133 +1,123 @@
-import React, { useEffect, useState } from "react";
-import NumberFormat from "react-number-format";
-import EditIcon from "../../assets/icons/edit.svg";
-import DeleteIcon from "../../assets/icons/delete.svg";
-import MenuIcon from "../../assets/icons/menu.svg";
-import IndexPage from "../../components/IndexPage/IndexPage";
+import React, { useEffect, useState } from 'react'
+import NumberFormat from 'react-number-format'
+import EditIcon from '../../assets/icons/edit.svg'
+import DeleteIcon from '../../assets/icons/delete.svg'
+import MenuIcon from '../../assets/icons/menu.svg'
+import IndexPage from '../../components/IndexPage/IndexPage'
 // import ModalClient from "../../../components/ModalClient/ModalClient";
-import Sidebar from "../../components/Sidebar/Sidebar";
-import { productService } from "../../services/product.service";
+import Sidebar from '../../components/Sidebar/Sidebar'
+import { productService } from '../../services/product.service'
 
-import "./homeAdmin.css";
-import "../../utils/animate.css";
-import ModalImages from "../../components/ModalImages/ModalImages";
-import ModalAddProduct from "../../components/ModalAddProduct/ModalAddProduct";
+import './homeAdmin.css'
+import '../../utils/animate.css'
+import ModalImages from '../../components/ModalImages/ModalImages'
+import ModalAddProduct from '../../components/ModalAddProduct/ModalAddProduct'
 // import detailsService from "../../services/details.service";
 
 // import ModalConfirm from "../../components/ModalConfirm/ModalConfirm";
 // import Spinner from "../../components/Spinner/Spinner";
-import ModalEditProduct from "../../components/ModalEditProduct/ModalEditProduct";
-import { closeModal, showModal } from "../../utils/functions/modal";
+import ModalEditProduct from '../../components/ModalEditProduct/ModalEditProduct'
+import { closeModal, showModal } from '../../utils/functions/modal'
+import ModalDetails from '../../components/ModalDetails/ModalDetails'
 const Products = () => {
-  const [firstLoad, setFirstLoad] = useState(false);
-  const [products, setProducts] = useState(undefined);
-
-  const [pageActual, setPageActual] = useState(1);
-  const [indexPages, setIndexPages] = useState([]);
-  const [cantPages, setCantPages] = useState(0);
+  const [products, setProducts] = useState(undefined)
+  const [cantPorPagina] = useState(5)
+  const [pageActual, setPageActual] = useState(1)
+  const [indexPages, setIndexPages] = useState([])
+  const [cantPages, setCantPages] = useState(0)
 
   // Details
-  const [types, setTypes] = useState();
-  const [categories, setCategories] = useState();
-  const [sizes, setSizes] = useState();
-  const [colors, setColors] = useState();
+  const [categories, setCategories] = useState()
 
-  const [productEdit, setProductEdit] = useState();
-  const [idProduct, setIdProduct] = useState();
-  const [message, setMessage] = useState(undefined);
+  const [productEdit, setProductEdit] = useState()
+  const [idProduct, setIdProduct] = useState()
+  const [message, setMessage] = useState(undefined)
 
   // Modal Content
-  const [infoModalImages, setInfoModalImages] = useState();
-  const [infoModalDetails, setInfoModalDetails] = useState();
+  const [infoModalImages, setInfoModalImages] = useState()
+  const [infoModalDetails, setInfoModalDetails] = useState()
 
   const getAllProducts = async () => {
-    setFirstLoad(true);
-    // const responseTypes = await detailsService.getTypes();
-    // const responseCategories = await detailsService.getCategories();
-    // const responseSizes = await detailsService.getSizes();
-    // const responseColors = await detailsService.getColors();
-    const response = await productService.getAllProducts(pageActual);
-    // setTypes(responseTypes);
-    // setCategories(responseCategories);
-    // setSizes(responseSizes);
-    // setColors(responseColors);
-    // setProducts(response.productos);
-    // setCantPages(response.cantPaginas);
+    const response = await productService.getAllProducts(
+      pageActual,
+      cantPorPagina
+    )
+    if (response.status === 200) {
+      setProducts(response.data.productos)
+      setCategories(response.data.categorias)
+      setCantPages(response.data.setCantPages)
+      let indexCopy = []
+      for (let i = 1; i <= response.data.cantPaginas; i++) {
+        indexCopy.push(i)
+      }
 
-    let indexCopy = [];
-    for (let i = 1; i <= response.cantPaginas; i++) {
-      indexCopy.push(i);
+      setIndexPages(indexCopy)
     }
-
-    setIndexPages(indexCopy);
-  };
-
-  if (!firstLoad) {
-    getAllProducts(1);
   }
 
   const showSidebar = () => {
-    document.querySelector(".container-sidebar")?.classList.add("show-sidebar");
-  };
+    document.querySelector('.container-sidebar')?.classList.add('show-sidebar')
+  }
 
-  const showModalImages = (product) => {
+  const showModalImages = product => {
     setInfoModalImages({
       nameProduct: product.nombre,
-      image: product.imagen,
-    });
+      image: product.imagen
+    })
 
-    showModal(".container-modal-images");
-  };
+    showModal('.container-modal-images')
+  }
 
-  const showModalDetails = (product) => {
+  const showModalDetails = product => {
     setInfoModalDetails({
-      details: product.detalles,
-      nameProduct: product.nombre,
-    });
-    showModal(".container-modal-details");
-  };
+      product: product
+    })
+    showModal('.container-modal-details')
+  }
 
-  const showModalEditProduct = (product) => {
-    setProductEdit(product);
-    showModal(".container-modal-edit-product");
-  };
+  const showModalEditProduct = product => {
+    setProductEdit(product)
+    showModal('.container-modal-edit-product')
+  }
 
-  const showModalDelete = (id) => {
-    showModal(".container-modal-confirm");
+  const showModalDelete = id => {
+    showModal('.container-modal-confirm')
 
-    setIdProduct(id);
+    setIdProduct(id)
     setMessage({
-      description: "¿Estás seguro de eliminar este producto?",
+      description: '¿Estás seguro de eliminar este producto?',
       status: 300,
-      action: deleteProduct,
-    });
-  };
+      action: deleteProduct
+    })
+  }
 
-  const deleteProduct = async (idProduct) => {
+  const deleteProduct = async idProduct => {
     setMessage({
-      description: "Eliminando producto...",
-      status: 1000,
-    });
-    const response = await productService.deleteProduct(idProduct);
+      description: 'Eliminando producto...',
+      status: 1000
+    })
+    const response = await productService.deleteProduct(idProduct)
     setTimeout(() => {
       setMessage({
         description: response.message,
-        status: response.status,
-      });
+        status: response.status
+      })
       const productUpdate = products?.filter(
-        (product) => parseInt(product.id) !== idProduct
-      );
-      setProducts(productUpdate);
+        product => parseInt(product.id) !== idProduct
+      )
+      setProducts(productUpdate)
       setTimeout(() => {
-        closeModal(".container-modal-confirm");
-      }, 2500);
-    }, 2500);
-  };
+        closeModal('.container-modal-confirm')
+      }, 2500)
+    }, 2500)
+  }
 
   useEffect(() => {
-    getAllProducts(1);
-  }, [pageActual]);
-  useEffect(() => {}, [productEdit]);
+    getAllProducts(pageActual)
+  }, [pageActual])
+  useEffect(() => {
+    getAllProducts()
+  }, [])
   return (
     <>
       {/* <ModalConfirm
@@ -138,48 +128,42 @@ const Products = () => {
 
       <ModalEditProduct
         setMessage={setMessage}
-        types={types}
         categories={categories}
-        sizes={sizes}
-        colors={colors}
         product={productEdit}
       />
-      <ModalAddProduct
-        setMessage={setMessage}
-        types={types}
-        categories={categories}
-        sizes={sizes}
-        colors={colors}
-      />
+      <ModalAddProduct setMessage={setMessage} categories={categories} />
       <ModalImages
         product={infoModalImages}
         setInfoModalImages={setInfoModalImages}
       />
-      <div className="container-products-admin">
+      <ModalDetails
+        infoModalDetails={infoModalDetails}
+        setInfoModalDetails={setInfoModalDetails}
+      />
+      <div className='container-products-admin'>
         <Sidebar />
-        <div className="products-admin">
-          <div className="head-admin">
-            <button className="btn-menu" onClick={() => showSidebar()}>
-              <img src={MenuIcon} alt="" />
+        <div className='products-admin'>
+          <div className='head-admin'>
+            <button className='btn-menu' onClick={() => showSidebar()}>
+              <img src={MenuIcon} alt='' />
             </button>
-            <h1 className="animate fadeIn">PRODUCTOS</h1>
+            <h1 className='animate fadeIn'>PRODUCTOS</h1>
             <button
-              onClick={() => showModal(".container-modal-add-product")}
-              className="btn-add-product animate fadeIn"
+              onClick={() => showModal('.container-modal-add-product')}
+              className='btn-add-product animate fadeIn'
             >
               AGREGAR
             </button>
           </div>
 
-          <div className="table-products">
+          <div className='table-products'>
             {products && products?.length > 0 && (
               <>
-                <table cellSpacing="0">
-                  <thead className="head-table animate fadeIn">
+                <table cellSpacing='0'>
+                  <thead className='head-table animate fadeIn'>
                     <tr>
                       <th>N°</th>
                       <th>Nombre</th>
-                      <th>Precio</th>
                       <th>Imágenes</th>
                       <th>Detalles</th>
                       <th>Stock</th>
@@ -195,40 +179,31 @@ const Products = () => {
                         <td>{product.id}</td>
                         <td>{product.nombre}</td>
                         <td>
-                          <NumberFormat
-                            value={product.precio}
-                            prefix="$"
-                            allowLeadingZeros
-                            thousandSeparator="."
-                            decimalSeparator=","
-                            readOnly
-                          />
-                        </td>
-                        <td>
                           <button onClick={() => showModalImages(product)}>
                             VER IMÁGENES
                           </button>
                         </td>
+
                         <td>
                           <button onClick={() => showModalDetails(product)}>
                             VER DETALLES
                           </button>
                         </td>
-                        <td>{product.stock ? "Si" : "No"}</td>
+                        <td>{product.stock ? 'Si' : 'No'}</td>
                         <td>
                           <button
-                            className="action"
+                            className='action'
                             onClick={() => showModalEditProduct(product)}
                           >
-                            <img src={EditIcon} alt="" />
+                            <img src={EditIcon} alt='' />
                           </button>
                           <button
-                            className="action"
+                            className='action'
                             onClick={() =>
                               showModalDelete(parseInt(product.id))
                             }
                           >
-                            <img src={DeleteIcon} alt="" />
+                            <img src={DeleteIcon} alt='' />
                           </button>
                         </td>
                       </tr>
@@ -244,18 +219,16 @@ const Products = () => {
               </>
             )}
             {products && products.length === 0 && (
-              <div className="empty-products">
+              <div className='empty-products'>
                 <p>No hay productos en la página</p>
               </div>
             )}
-            {products === undefined && (
-              <div className="empty-products">{/* <Spinner /> */}</div>
-            )}
+            {products === undefined && <div className='empty-products'></div>}
           </div>
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Products;
+export default Products

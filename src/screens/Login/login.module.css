@@ -1,0 +1,73 @@
+.headerAdmin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+}
+.headerAdmin img {
+  width: 100px;
+}
+
+.admin {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.admin h1 {
+  color: #00a87a;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+}
+.admin .formAdmin {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0;
+}
+
+.admin .formAdmin .input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 15px 0;
+}
+
+.admin .formAdmin .input label {
+  color: #00a87a;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+  margin: 5px 0;
+}
+
+.admin .formAdmin .input input {
+  background: none;
+  width: 400px;
+  text-align: start;
+  border: 2px solid #00a87a;
+  border-radius: 15px;
+  font-size: 17px;
+  padding: 14px 11px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  outline: none;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.17);
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.17);
+  -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.17);
+}
+
+.admin .formAdmin button {
+  margin: 20px 0 10px;
+  background-color: #00a87a;
+  color: white;
+  padding: 13px 18px;
+  width: 100%;
+  border-radius: 15px;
+  border: 1px solid #00a87a;
+  font-family: 'Carrois Gothic', sans-serif;
+  font-size: 19px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.17);
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.17);
+  -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.17);
+}

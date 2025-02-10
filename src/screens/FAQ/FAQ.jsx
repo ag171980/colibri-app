@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
 import FaqCSS from './faq.module.css'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
@@ -19,7 +18,6 @@ const FAQ = () => {
 
   const getFaqs = async () => {
     const response = await initService.getFaqs()
-    console.log(response.data)
 
     setFaqs(response.data)
   }
@@ -54,9 +52,16 @@ const FAQ = () => {
             </div>
           ))}
 
-          <Link to={socials.wpp} target='_blank' className={FaqCSS.btnContact}>
-            ¡Contactános!
-          </Link>
+          <div className={FaqCSS.containerBtnContact}>
+            <Link
+              className={FaqCSS.btnContact}
+              to={socials.wpp}
+              rel='noreferrer'
+              target='_blank'
+            >
+              ¡Contactános!
+            </Link>
+          </div>
         </div>
       </div>
       <Footer socials={socials} />

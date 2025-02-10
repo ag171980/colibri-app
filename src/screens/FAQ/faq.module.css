@@ -63,8 +63,10 @@
 .containerFaq .cardFaq .faqItem p {
   text-align: start;
 }
-
-.containerFaq .cardFaq .btnContact {
+.containerBtnContact{
+  margin: 6vh 0 2vh;
+}
+.containerFaq .cardFaq .containerBtnContact .btnContact {
   background-color: #00a87a;
   text-decoration: none;
   color: white;
@@ -75,7 +77,6 @@
   border-radius: 50px;
   width: 200px;
   padding: 18px 24px;
-  margin: 6vh 0 2vh;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);

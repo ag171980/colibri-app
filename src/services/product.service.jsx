@@ -13,10 +13,11 @@ const getProductById = async id => {
   return response
 }
 
-const getAllProducts = async (page) => {
+const getAllProducts = async (page, cantPorPagina) => {
   let url = `${urlBase}${process.env.REACT_APP_URL_PRODUCTS}`
   url = url.replace(':accion', 'allProducts')
   url = url.replace(':pagina', page)
+  url = url.replace(':cantPorPagina', cantPorPagina)
 
   const response = await axios.get(url)
 
@@ -34,8 +35,18 @@ const getProductsByCategory = async (filter, page) => {
   return response
 }
 
+const addProduct = async product => {
+  let url = `${urlBase}${process.env.REACT_APP_URL_PRODUCTS}`
+  url = url.replace(':accion', 'addProduct')
+
+  const response = await axios.post(url, product)
+
+  return response
+}
+
 export const productService = {
   getProductById,
   getProductsByCategory,
-  getAllProducts
+  getAllProducts,
+  addProduct
 }

@@ -1,78 +1,70 @@
-import React, { useState } from "react";
-
-import LoaderBtn from "../../components/LoaderBtn/LoaderBtn";
-
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-
-import "./login.css";
-import { userService } from "../../services/user.service";
-import { useNavigate } from "react-router-dom";
-import CustomAlert from "../../components/Alert/Alert";
-import HeaderAdmin from "../../components/HeaderAdmin/HeaderAdmin";
+import React, { useState } from 'react'
+import LoginCSS from './login.module.css'
+import Logo from '../../assets/logo.svg'
+import Alert from '../../components/Alert/Alert'
+import { useNavigate } from 'react-router-dom'
+import { userService } from '../../services/user.service'
+import LoaderBtn from '../../components/LoaderBtn/LoaderBtn'
 const Login = () => {
-  const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [stateBtn, setStateBtn] = useState("Ingresar");
-  const [alert, setAlert] = useState(undefined);
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStateBtn(<LoaderBtn />);
-    const response = await userService.signIn({ username, password });
-    if (response.status === 200) {
-      setStateBtn("Ingresar");
-      navigate("/admin/home");
-      setAlert({ msg: "Correcto", variant: "success" });
-    } else {
-      setAlert({ msg: "Error", variant: "error" });
-    }
-    setTimeout(() => {
-      setAlert(undefined);
-    }, 1000);
-    console.log(username, password);
-  };
+  const navigate = useNavigate()
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [stateButton, setStateButton] = useState('INGRESAR')
+  const [alert, setAlert] = useState('')
+  const handleSubmit = async e => {
+    e.preventDefault()
+    setStateButton(<LoaderBtn />)
+    setTimeout(async () => {
+      const response = await userService.signIn({ username, password })
+      setAlert(response.message)
+      if (response.status === 200) {
+        navigate('/admin/home')
+      }
+      setTimeout(() => {
+        setAlert('')
+      }, 1500)
+    }, 1500)
+  }
   return (
     <>
-      {alert && <CustomAlert alert={alert} />}
-      <div className="container-login">
-        <HeaderAdmin />
-        <main className="login w-full pt-6">
-          <Form
-            className="container shadow p-4 rounded bg-white"
-            onSubmit={(e) => handleSubmit(e)}
+      {alert && <Alert message={alert} />}
+      <div className={LoginCSS.containerAdmin}>
+        <header className={LoginCSS.headerAdmin}>
+          <img src={Logo} alt='' />
+        </header>
+        <div className={LoginCSS.admin}>
+          <h1>Ingresá</h1>
+          <form
+            onSubmit={e => handleSubmit(e)}
+            action=''
+            className={LoginCSS.formAdmin}
           >
-            <Form.Group className="mb-3">
-              <Form.Label htmlFor="username">Usuario</Form.Label>
-              <Form.Control
-                onChange={(e) => setUsername(e.target.value)}
-                type="text"
-                id="username"
-                name="username"
-                placeholder="Ingrese su usuario..."
-                required
+            <div className={LoginCSS.input}>
+              <label htmlFor='username'>Usuario</label>
+              <input
+                type='text'
+                id='username'
+                name='username'
+                className={LoginCSS.username}
+                onChange={e => setUsername(e.target.value)}
               />
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-              <Form.Label htmlFor="pass">Contraseña</Form.Label>
-              <Form.Control
-                onChange={(e) => setPassword(e.target.value)}
-                type="password"
-                id="pass"
-                name="pass"
-                placeholder="Ingrese su contraseña..."
-                required
+            </div>
+            <div className={LoginCSS.input}>
+              <label htmlFor='password'>Contraseña</label>
+              <input
+                type='password'
+                id='password'
+                name='password'
+                className={LoginCSS.password}
+                onChange={e => setPassword(e.target.value)}
               />
-            </Form.Group>
-            <Button className="btn-login" variant="success" type="submit">
-              {stateBtn}
-            </Button>
-          </Form>
-        </main>
+            </div>
+            <button type='submit'>{stateButton}</button>
+          </form>
+        </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

@@ -26,14 +26,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #cfb53b;
+  border-bottom: 1px solid #00A87A;
   padding: 20px;
 }
 
 .container-modal-images .modal-images .header-modal h3 {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: normal;
-  color: #cfb53b;
+  color: #00A87A;
   font-size: 23px;
 }
 

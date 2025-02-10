@@ -18,10 +18,10 @@ const Index = () => {
     ig: 'https://www.instagram.com/colibri_premium/',
     fb: ''
   })
-  const [loader, setLoader] = useState(false)
-  const [pages, setPages] = useState(0)
+  const [, setLoader] = useState(false)
+  const [, setPages] = useState(0)
   const [products, setProducts] = useState(undefined)
-  const [productsOriginal, setProductsOriginal] = useState([])
+  const [, setProductsOriginal] = useState([])
 
   useEffect(() => {
     async function fetchData () {
@@ -52,6 +52,7 @@ const Index = () => {
 
           <a
             href={socials.wpp}
+            rel='noreferrer'
             target='_blank'
             className='btn-contact animate__animated animate__fadeIn animate__delay-03s'
           >
