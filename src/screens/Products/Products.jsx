@@ -59,7 +59,7 @@ const Products = () => {
   }
 
   const getProducts = async () => {
-    const response = await productService.getAllProducts(pageActual)
+    const response = await productService.getAllProducts(pageActual, process.env.REACT_APP_CANT_PRODUCTS)
     if (response.status === 200) {
       setProducts(response.data.productos)
       setPages(response.data.cantPaginas)

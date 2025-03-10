@@ -1,0 +1,533 @@
+.container-checkout {
+  font-family: 'Poppins', serif;
+}
+
+.container-checkout header {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-checkout header .logo {
+  width: 160px !important;
+  margin: 0;
+}
+
+.container-checkout .steps {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0 0;
+}
+
+.container-checkout .steps .step {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 25px;
+  position: relative;
+}
+
+.container-checkout .steps .step-completed .icon-step {
+  border: 1px solid #00a87a;
+}
+.container-checkout .steps .step-completed .icon-step svg {
+  color: #00a87a;
+}
+.container-checkout .steps .step-incompleted .icon-step {
+  border: 1px solid gray;
+}
+.container-checkout .steps .step-incompleted .icon-step svg {
+  color: gray;
+}
+
+.container-checkout .steps .step .icon-step {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  position: relative;
+}
+
+.container-checkout .steps .step .icon-step::after {
+  content: '';
+  background-color: gray;
+  height: 2px;
+  width: 155%;
+  position: absolute;
+  top: 50%;
+  right: -155%;
+  transform: translateY(-50%);
+}
+
+.container-checkout .steps .step-completed .icon-step::after {
+  background-color: #00a87a;
+}
+
+.container-checkout .steps .step .icon-step svg {
+  font-size: 23px;
+}
+
+.container-checkout .steps .step h4 {
+  margin-top: 8px;
+}
+
+/* Checkout */
+
+.container-checkout .checkout {
+  width: 80%;
+  margin: 0 auto;
+  padding: 50px 0 0;
+}
+
+.container-checkout .checkout h1 {
+  font-weight: 500;
+  color: #00a87a;
+  font-size: 35px;
+}
+
+.container-checkout .checkout .form-cart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 30px 0;
+}
+
+.container-checkout .checkout .form-cart .see-cart {
+  display: none;
+  align-self: flex-start;
+  padding: 12px 24px 12px 0;
+  font-family: 'Poppins', serif;
+  background: none;
+  border: none;
+  font-size: 15px;
+  color: #00a87a;
+  text-decoration: underline;
+}
+.container-checkout .checkout .form-cart .form {
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+}
+
+.container-checkout .checkout .form-cart .form .input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 4px 0;
+}
+
+.container-checkout .checkout .form-cart .form .input-group label {
+  color: #00a87a;
+  font-weight: 600;
+  padding: 8px 0;
+  font-size: 18px;
+}
+
+.container-checkout .checkout .form-cart .form .input-group input,
+.container-checkout .checkout .form-cart .form .input-group select {
+  width: 100%;
+  border: 2px solid #00a87a;
+  border-radius: 15px;
+  font-size: 18px;
+  padding: 17px 15px;
+  outline: none;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.17);
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.17);
+  -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.17);
+}
+.container-checkout .checkout .form-cart .form .input-group select {
+  font-size: 17px;
+  padding: 17px 30px 17px 5px;
+  background-color: white;
+  color: #4a4a4a;
+}
+
+.container-checkout .checkout .form-cart .form .inputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.container-checkout .checkout .form-cart .form .inputs .input-group {
+  width: 47%;
+}
+
+.container-checkout .checkout .form-cart .form .actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.container-checkout .checkout .form-cart .form .actions a,
+.container-checkout .checkout .form-cart .form .actions button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 36px;
+  text-decoration: none;
+  font-family: 'Poppins', serif;
+  color: #00a87a;
+}
+.container-checkout .checkout .form-cart .form .actions button:hover {
+  cursor: pointer;
+}
+.container-checkout .checkout .form-cart .form .actions a img {
+  transform: rotate(180deg) translateX(10px);
+}
+
+.container-checkout .checkout .form-cart .form .actions button:nth-child(2) {
+  border-radius: 15px;
+  font-size: 16px;
+  color: white;
+  background-color: #00a87a;
+  border: 2px solid #00a87a;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.17);
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.17);
+  -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.17);
+}
+
+.container-checkout .checkout .form-cart .cart {
+  width: 50%;
+}
+/*asdadaadasdadadadd*/
+
+.container-checkout .checkout .payments {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 670px;
+}
+
+.container-checkout .checkout .payments button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  outline: none;
+  border: none;
+  color: #00a87a;
+  font-size: 15px;
+}
+
+.container-checkout .checkout .payments button img {
+  transform: rotate(180deg) translateX(10px);
+}
+
+.container-checkout .checkout .payments > h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  color: #00a87a;
+  font-size: 22px;
+  padding: 8px 0 15px 0;
+  align-self: flex-start;
+}
+
+.container-checkout .checkout .payments .payment {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 15px 0;
+  padding: 20px 15px;
+  border: 2px solid #00a87a;
+  border-radius: 15px;
+  width: 100%;
+  height: 100px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.17);
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.17);
+  -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.17);
+  transition: 0.5s all;
+}
+
+.container-checkout .checkout .payments .payment:hover {
+  cursor: pointer;
+  background-color: #00a87a;
+}
+
+.container-checkout .checkout .payments .payment:hover h4 {
+  color: white;
+}
+
+.container-checkout .checkout .payments .payment img {
+  width: 55px;
+}
+.container-checkout .checkout .payments .payment h4 {
+  color: #00a87a;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+  margin: 0 10px;
+  transition: 0.5s all;
+  text-align: start;
+}
+
+.container-checkout .checkout .payments a {
+  margin: 15px 0;
+  text-decoration: none;
+  color: #00a87a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Carrois Gothic', sans-serif;
+}
+
+.container-checkout .checkout .payments .back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  outline: none;
+  border: none;
+  color: #00a87a;
+  font-size: 15px;
+}
+.container-checkout .checkout .payments .back img {
+  transform: rotate(180deg) translateX(10px);
+}
+
+.container-checkout .checkout .see-cart {
+  display: none;
+  align-self: flex-start;
+  padding: 12px 24px 12px 0;
+  font-family: 'Carrois Gothic', sans-serif;
+  background: none;
+  border: none;
+  font-size: 15px;
+  color: #00a87a;
+  text-decoration: underline;
+}
+
+/* - Mercado Pago Style - */
+
+.container-checkout .checkout > a {
+  margin: 15px 0;
+  text-decoration: none;
+  color: #00a87a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Carrois Gothic', sans-serif;
+}
+
+.container-checkout .checkout > h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  color: #00a87a;
+  font-size: 24px;
+  padding: 0 0 15px;
+}
+
+.container-checkout .checkout p {
+  text-align: start;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  padding: 10px 0 20px;
+}
+
+.container-checkout .checkout .payment-images {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.container-checkout .checkout .payment-images img {
+  width: 50px;
+  margin: 7px 8px 7px 0;
+}
+
+.container-checkout .checkout .methods .pay-purchase {
+  margin: 20px 0 10px;
+  background-color: #00a87a;
+  color: white;
+  padding: 13px 18px;
+  width: 120px;
+  border-radius: 15px;
+  border: 1px solid #00a87a;
+  font-family: 'Carrois Gothic', sans-serif;
+  font-size: 19px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.17);
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.17);
+  -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.17);
+}
+
+.container-checkout .checkout .methods button img {
+  transform: rotate(180deg) translateX(10px);
+}
+
+/* - Transferencias Styles - */
+.container-checkout .checkout .methods .info-purchase {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.container-checkout .checkout .methods .info-purchase h4 {
+  color: #00a87a;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  margin: 10px 0 15px;
+}
+
+.container-checkout .checkout .methods .info-purchase .info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 5px 0 8px;
+}
+
+.container-checkout .checkout .methods .info-purchase .info h5 {
+  color: #00a87a;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+}
+.container-checkout .checkout .methods .info-purchase .info p {
+  padding: 5px 0;
+}
+#walletBrick_container div div div div div button {
+  background-color: #00a87a !important;
+}
+
+@media (max-width: 1367px) {
+  .container-checkout header {
+    height: 100px;
+  }
+
+  .container-checkout header .logo {
+    width: 110px;
+  }
+  .container-checkout .checkout {
+    padding: 50px 0 0;
+  }
+  .container-checkout .checkout h1 {
+    font-size: 30px;
+  }
+
+  .container-checkout .checkout .form-cart .form .input-group input,
+  .container-checkout .checkout .form-cart .form .input-group select {
+    font-size: 16px;
+    padding: 14px 15px;
+  }
+  .container-checkout .checkout .form-cart .form .input-group {
+    margin: 2px 0;
+  }
+
+  .container-payment header {
+    height: 100px;
+  }
+
+  .container-payment header .logo {
+    width: 110px;
+  }
+  .container-checkout .checkout {
+    width: 80%;
+  }
+  .container-payment h1 {
+    font-size: 30px;
+  }
+
+  .container-checkout .checkout .payments {
+    padding: 5px 0;
+  }
+  .container-checkout .checkout .payments .payment {
+    padding: 8px 8px;
+    height: 85px;
+  }
+
+  .container-checkout .checkout .payments .payment h4 {
+    font-size: 18px;
+  }
+}
+@media (max-width: 1024px) {
+  .container-checkout .checkout {
+    width: 95vw;
+  }
+
+  .container-checkout .checkout .form-cart .form .input-group label {
+    font-size: 16px;
+  }
+  .container-checkout .checkout .form-cart .form .input-group input,
+  .container-checkout .checkout .form-cart .form .input-group select {
+    font-size: 15px;
+    padding: 15px 12px;
+  }
+
+  .container-checkout .checkout {
+    width: 95vw;
+  }
+  .container-payment
+    .payments-cart
+    .tarjetas
+    .pay-form
+    .inputs
+    .input-group:nth-child(1) {
+    width: 30%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-checkout .checkout {
+    width: 85vw;
+  }
+  .container-checkout .checkout .form-cart {
+    flex-direction: column-reverse;
+  }
+  .container-checkout .checkout .form-cart .see-cart {
+    display: block;
+  }
+  .container-checkout .checkout .form-cart .form {
+    width: 100%;
+  }
+  .container-checkout .checkout h1 {
+    font-size: 30px;
+  }
+
+  .container-payment h1 {
+    font-size: 30px;
+  }
+  .container-checkout .checkout {
+    flex-direction: column-reverse;
+    width: 80vw;
+  }
+  .container-checkout .checkout .payments,
+  .container-checkout .checkout .methods {
+    width: 100%;
+  }
+
+  .container-checkout .checkout .see-cart {
+    display: block;
+  }
+}
+
+@media (max-width: 515px) {
+  .container-checkout .checkout {
+    width: 90vw;
+  }
+
+  .container-checkout .checkout h1 {
+    font-size: 28px;
+  }
+  .container-checkout .checkout .form-cart .form .actions a {
+    padding: 16px 20px;
+  }
+}
+
+@media (max-width: 375px) {
+  .container-checkout .checkout {
+    width: 95vw;
+  }
+  .container-checkout .checkout .form-cart .form .actions a {
+    padding: 16px;
+  }
+}

@@ -46,9 +46,11 @@ const Product = () => {
   const addCart = product => {
     let productFormatted = {
       id: product.id,
+      image: product.imagen[0],
       nombre: product.nombre,
       categoria: product.categoria,
       precio: parseInt(product.precio),
+      stock: product.stock,
       cantidad: 1
     }
     setAlert({ msg: 'Producto agregado al carrito', variant: 'success' })
@@ -82,14 +84,22 @@ const Product = () => {
               <div className='images'>
                 <div className='others'>
                   {product.imagen.length > 0 &&
-                    product.imagen.map((img, keyImg) => (
-                      <img
-                        className='animate__animated animate__fadeIn animate__delay-01s'
-                        key={keyImg}
-                        src={img ? img : RectangleExample}
-                        alt=''
-                      />
-                    ))}
+                    product.imagen.map((img, keyImg) => {
+                      if (keyImg !== 0) {
+                        return (
+                          <img
+                            className='animate__animated animate__fadeIn animate__delay-01s'
+                            key={keyImg}
+                            src={
+                              img
+                                ? `${process.env.REACT_APP_URL_BACKEND_BASE}/${img}`
+                                : RectangleExample
+                            }
+                            alt=''
+                          />
+                        )
+                      }
+                    })}
                   {product.imagen.length === 0 && (
                     <>
                       <img
@@ -112,7 +122,11 @@ const Product = () => {
                 </div>
                 <img
                   className='principal animate__animated animate__fadeIn animate__delay-01s'
-                  src={product.imagen[0] ? product.imagen[0] : RectangleExample}
+                  src={
+                    product.imagen[0]
+                      ? `${process.env.REACT_APP_URL_BACKEND_BASE}/${product.imagen[0]}`
+                      : RectangleExample
+                  }
                   alt=''
                 />
               </div>

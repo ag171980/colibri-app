@@ -25,7 +25,10 @@ const Index = () => {
 
   useEffect(() => {
     async function fetchData () {
-      const response = await productService.getAllProducts(1)
+      const response = await productService.getAllProducts(
+        1,
+        process.env.REACT_APP_CANT_PRODUCTS
+      )
       if (response.status === 200) {
         setProducts(response.data.productos)
         setProductsOriginal(response.data.productos)

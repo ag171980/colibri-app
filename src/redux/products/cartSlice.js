@@ -15,6 +15,7 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const product = action.payload
+      console.log(product)
 
       const existingProduct = state.items.find(item => item.id === product.id)
       if (existingProduct) {
@@ -31,6 +32,20 @@ const cartSlice = createSlice({
 
       sessionStorage.setItem('cart', JSON.stringify(state.items))
     },
+    addCantProduct: (state, action) => {
+      const product = action.payload
+      const productFiltered = state.items.find(item => item.id === product.id)
+      if (productFiltered) {
+        productFiltered.cantidad += 1
+      } else {
+        state.items.push({ ...product, cantidad: product.cantidad + 1 })
+      }
+    },
+    removeCantProduct: (state, action) => {
+      const product = action.payload
+      const productFiltered = state.items.find(item => item.id === product.id)
+      productFiltered.cantidad -= 1
+    },
     clearCart: state => {
       state.items = []
 
@@ -39,7 +54,13 @@ const cartSlice = createSlice({
   }
 })
 
-export const { addToCart, removeFromCart, clearCart } = cartSlice.actions
+export const {
+  addToCart,
+  removeFromCart,
+  addCantProduct,
+  removeCantProduct,
+  clearCart
+} = cartSlice.actions
 
 export const obtenerCantidadProductos = state => state.cart.items.length
 

@@ -6,6 +6,10 @@
   margin: 0 5px 0 25px;
 }
 
+.containerCart:hover {
+  cursor: pointer;
+}
+
 .containerCart svg {
   font-size: 28px;
 }

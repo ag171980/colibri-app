@@ -9,12 +9,14 @@
   font-size: 55px;
   color: #2a295f;
   font-weight: 600;
+  text-align: center;
 }
 
 .container-our-services h3 {
   font-size: 40px;
   color: #00a87a;
   font-weight: 600;
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -78,6 +80,7 @@
   color: #2a295f;
   margin-top: 11vh;
   font-size: 26px;
+  text-align: center;
 }
 
 .container-our-services .services {
@@ -106,6 +109,7 @@
   font-size: 30px;
   color: #2a295f;
   margin-top: 15px;
+  text-align: center;
 }
 
 .container-our-services .services .service p {
@@ -196,7 +200,7 @@
   .container-our-services .form-doubt form input {
     width: 100%;
   }
-  .container-our-services .form-doubt form button{
+  .container-our-services .form-doubt form button {
     width: 130px;
     margin-top: 20px;
   }

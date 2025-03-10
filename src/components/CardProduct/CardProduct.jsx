@@ -7,7 +7,11 @@ const CardProduct = ({ product }) => {
       className={`card-product animate__animated animate__fadeIn animate__delay-0${product.id}s`}
     >
       <img
-        src={product?.imagen?.length > 0 ? product.imagen[0] : RectangleExample}
+        src={
+          product?.imagen?.length > 0
+            ? `${process.env.REACT_APP_URL_BACKEND_BASE}/${product.imagen[0]}`
+            : RectangleExample
+        }
         alt=''
       />
       <a href={`/productos/${product.categoria.toLowerCase()}/${product.id}`}>

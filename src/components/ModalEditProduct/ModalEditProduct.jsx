@@ -93,7 +93,6 @@ const ModalEditProduct = ({ setMessage, categories, product }) => {
         tipo: typeProduct,
         categoria: categoryProduct,
         imagenes: fileContentsEdit,
-        sets: combos
       }
       closeModal('.container-modal-edit-product')
       showModal('.container-modal-confirm')

@@ -21,7 +21,7 @@ import { closeModal, showModal } from '../../utils/functions/modal'
 import ModalDetails from '../../components/ModalDetails/ModalDetails'
 const Products = () => {
   const [products, setProducts] = useState(undefined)
-  const [cantPorPagina] = useState(5)
+  const [cantPorPagina] = useState(10)
   const [pageActual, setPageActual] = useState(1)
   const [indexPages, setIndexPages] = useState([])
   const [cantPages, setCantPages] = useState(0)
