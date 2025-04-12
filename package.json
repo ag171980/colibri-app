@@ -2,6 +2,7 @@
   "name": "colibri-app",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "@mercadopago/sdk-js": "^0.0.3",
     "@mercadopago/sdk-react": "^0.0.19",
@@ -12,6 +13,7 @@
     "@types/react-redux": "^7.1.27",
     "axios": "^1.5.1",
     "bootstrap": "^5.3.3",
+    "imask": "^7.6.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.7",
     "react-dom": "^18.2.0",
