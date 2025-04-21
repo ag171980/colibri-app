@@ -18,14 +18,18 @@ import { FaWpforms } from 'react-icons/fa'
 // mercado-pago-sdk
 import MercadoPago from './methods/MercadoPago/MercadoPago'
 import Tarjetas from './methods/Tarjetas/Tarjetas'
+import Spinner from '../../components/Spinner/Spinner'
 const Checkout = () => {
   const { items } = useSelector(state => state.cart)
   const { buyer } = useSelector(state => state.buyer)
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const [processPayment, setProcessPayment] = useState(false)
   const [stepActual, setStepActual] = useState(0)
   const [methodActual, setMethodActual] = useState(undefined)
+
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
   const [surname, setSurname] = useState('')
@@ -73,6 +77,7 @@ const Checkout = () => {
   }
 
   const makeOrder = async () => {
+    setProcessPayment(true)
     if (items && buyer) {
       const response = await paymentService.makeOrder(
         items,
@@ -80,7 +85,8 @@ const Checkout = () => {
         'transferencia'
       )
       if (response.status === 200) {
-        navigate('/pago/transferencia')
+        setProcessPayment(false)
+        navigate('/checkout/transferencia')
       }
     }
   }
@@ -89,33 +95,18 @@ const Checkout = () => {
     loadData()
   }, [])
 
+  useEffect(() => {
+    document.title = `${
+      stepActual === 0 ? 'Contacto' : 'Pago'
+    } - Colibri Premium`
+  }, [stepActual])
+
   return (
     <div className='container-checkout'>
       <header>
         <img className='logo' src={images.Logo} alt='' />
       </header>
-      {/* <div className='steps'>
-        <div
-          className={`step step-${
-            stepActual === 0 ? 'completed' : 'incompleted'
-          }`}
-        >
-          <div className='icon-step'>
-            <FaWpforms />
-          </div>
-          <h4>Facturación</h4>
-        </div>
-        <div
-          className={`step step-${
-            stepActual > 0 ? 'completed' : 'incompleted'
-          }`}
-        >
-          <div className='icon-step'>
-            <CiCreditCard1 />
-          </div>
-          <h4>Pago</h4>
-        </div>
-      </div> */}
+
       <div className='checkout'>
         {stepActual === 0 && <h1>Datos de Contacto</h1>}
         {stepActual === 1 && <h1>Medios de Pago</h1>}
@@ -248,9 +239,23 @@ const Checkout = () => {
                   <img src={images.LogoMasterCard} alt='' />
                   <h4>Tarjeta de Crédito/Débito</h4>
                 </div>
-                <div onClick={() => makeOrder()} className='payment'>
+                <div
+                  onClick={() => {
+                    if (!processPayment) {
+                      makeOrder()
+                    }
+                  }}
+                  className={`payment ${
+                    processPayment ? 'payment-processing' : ''
+                  }`}
+                >
                   <img src={images.LogoTransferencia} alt='' />
                   <h4>Transferencia</h4>
+                  {processPayment && (
+                    <div className='processing-loader'>
+                      <Spinner />
+                    </div>
+                  )}
                 </div>
                 <button onClick={() => setStepActual(0)} className='back'>
                   <img src={images.ArrowIcon} alt='' />

@@ -195,7 +195,7 @@
   .menu {
     margin-left: 0px;
   }
-  .language {
+  .header > .menu > .language {
     margin-left: 5vh;
   }
 }
@@ -204,15 +204,44 @@
   .header {
     padding: 50px 0;
   }
-  .logo {
+
+  .header .logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     margin: 0;
   }
-  .menu {
+
+  .header > .menu {
+    background: none;
+    margin-right: 0;
+    position: relative;
+    left: 280px;
+  }
+  .header > .menu > .menu-item {
     display: none;
   }
+
+  .header > .menu > .language {
+    display: none;
+  }
+
   .btn-menu {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+}
+
+@media (max-width: 690px) {
+  .header > .menu {
+    left: 38%;
+  }
+}
+
+@media (max-width: 425px) {
+  .header > .menu {
+    left: 35%;
   }
 }

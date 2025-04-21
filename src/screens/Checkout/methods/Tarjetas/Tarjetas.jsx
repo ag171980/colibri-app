@@ -14,6 +14,8 @@ import { IMaskInput } from 'react-imask'
 import './Tarjetas.css'
 import { useSelector } from 'react-redux'
 import { paymentService } from '../../../../services/payment.service'
+import ModalConfirm from '../../../../components/ModalConfirm/ModalConfirm'
+
 const Tarjetas = ({ setMethodActual }) => {
   const { items } = useSelector(state => state.cart)
   const { buyer } = useSelector(state => state.buyer)
@@ -42,6 +44,7 @@ const Tarjetas = ({ setMethodActual }) => {
   const [paymentMethodId, setPaymentMethodId] = useState('')
   const [issuerId, setIssuerId] = useState('')
   const [bin, setBin] = useState('')
+  const [thumbnailCard, setThumbnailCard] = useState()
   const [identification, setIdentification] = useState({
     id: 'DNI',
     name: 'DNI',
@@ -99,15 +102,12 @@ const Tarjetas = ({ setMethodActual }) => {
           totalCart,
           paymentMethodId,
           'Compra de prueba',
-          email,
+          buyer.email,
           identification.id,
           identificationNumber,
           installments,
           issuerId
         )
-        // let response = {
-        //   status: "approved",
-        // };
         setTimeout(async () => {
           if (response.status === 'approved') {
             setMessage({
@@ -135,10 +135,10 @@ const Tarjetas = ({ setMethodActual }) => {
   }
 
   useEffect(() => {
-    const getAllInstallments = async () => {
-      if (bin.length === 7 && items) {
-        console.log(bin)
+    console.log('entra?')
 
+    const getAllInstallments = async () => {
+      if (bin.length >= 7 && items) {
         const installs = await getInstallments({
           amount: totalCart.toString(),
           locale: 'es-AR',
@@ -152,6 +152,7 @@ const Tarjetas = ({ setMethodActual }) => {
           setErrorCard('')
           setPaymentMethodId(installs[0].payment_method_id)
           setListPayerCost(installs[0].payer_costs)
+          setThumbnailCard(installs[0].issuer.thumbnail)
 
           const issuers = await getIssuers({
             paymentMethodId: installs[0].payment_method_id,
@@ -165,6 +166,7 @@ const Tarjetas = ({ setMethodActual }) => {
         }
       }
     }
+
     getAllInstallments()
   }, [bin])
 
@@ -201,136 +203,153 @@ const Tarjetas = ({ setMethodActual }) => {
   }, [modal])
 
   return (
-    <div className='payment-detail'>
-      <button onClick={() => setMethodActual(undefined)}>
-        <img src={images.ArrowIcon} alt='' /> VOLVER
-      </button>
-      <h3>Tarjeta de Crédito/Débito</h3>
-      <form onSubmit={e => createPayment(e)} className='pay-form'>
-        <div className='input-group'>
-          <label htmlFor='email'>Correo Electrónico</label>
-          <input
-            type='email'
-            name='email'
-            id='form-checkout__cardholderEmail'
-            placeholder='jhondoe@gmail.com'
-            onChange={e => setEmail(e.target.value)}
-          />
-        </div>
-        <div className='input-group'>
-          <label htmlFor='Numero'>Numero de Tarjeta</label>
+    <>
+      {message && <ModalConfirm message={message} />}
+      <div className='payment-detail'>
+        <button onClick={() => setMethodActual(undefined)}>
+          <img src={images.ArrowIcon} alt='' /> VOLVER
+        </button>
+        <h3>Tarjeta de Crédito/Débito</h3>
+        <form onSubmit={e => createPayment(e)} className='pay-form'>
+          <div className='input-group'>
+            <label htmlFor='email'>Correo Electrónico</label>
+            <input
+              type='email'
+              name='email'
+              id='form-checkout__cardholderEmail'
+              placeholder='jhondoe@gmail.com'
+              value={buyer.email}
+              onChange={e => setEmail(e.target.value)}
+            />
+          </div>
+          <div className='input-group'>
+            <label htmlFor='Numero'>Numero de Tarjeta</label>
 
-          <IMaskInput
-            mask='0000 0000 0000 0000'
-            placeholder='5522 5001 1234 9881'
-            onAccept={value => {
-              setCardNumber(value)
-              if (value.length >= 7) {
-                setBin(value)
-              }
-            }}
-          />
-          {errorCard && <small>{errorCard}</small>}
-        </div>
-        <div className='inputs'>
-          <div className='input-group'>
-            <label htmlFor='name'>Nombre</label>
-            <input
-              type='text'
-              name='name'
-              onChange={e => setCardName(e.target.value)}
-              id='form-checkout__cardholderName'
-              placeholder='Jhon Doe'
+            <IMaskInput
+              className={`${errorCard ? 'error-input' : ''}`}
+              mask='0000 0000 0000 0000'
+              placeholder='5522 5001 1234 9881'
+              onAccept={value => {
+                setCardNumber(value)
+                if (value.length >= 7) {
+                  setBin(value)
+                }
+              }}
             />
+            {thumbnailCard && (
+              <img src={thumbnailCard} width={40} height={30} />
+            )}
+            {errorCard && <small style={{ color: 'red' }}>{errorCard}</small>}
           </div>
-          <div className='input-group'>
-            <label htmlFor='month_card'>MM</label>
-            <input
-              type='number'
-              maxLength={2}
-              onChange={e => setCardExpirationMonth(parseInt(e.target.value))}
-              name='month_card'
-              id='form-checkout__cardExpirationMonth'
-              placeholder='05'
-            />
-          </div>
-          <div className='input-group'>
-            <label htmlFor='year_card'>AA</label>
-            <input
-              type='number'
-              maxLength={4}
-              onChange={e => setCardExpirationYear(parseInt(e.target.value))}
-              name='year_card'
-              id='form-checkout__cardExpirationYear'
-              placeholder='25'
-            />
-          </div>
-          <div className='input-group'>
-            <label htmlFor='code_card'>CCV</label>
-            <input
-              type='number'
-              maxLength={4}
-              onChange={e => setSecurityCode(parseInt(e.target.value))}
-              name='code_card'
-              id='form-checkout__securityCode'
-              placeholder='119'
-            />
-          </div>
-        </div>
-        <div className='input-group'>
-          <label htmlFor=''>Cuotas</label>
-          <select
-            name='installments'
-            id='form-checkout__installments'
-            onChange={e => setInstallments(parseInt(e.target.value))}
-          >
-            {listPayerCost?.map((payerCost, key) => (
-              <option key={key} value={payerCost.installments}>
-                {payerCost.recommended_message}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className='input-group'>
-          <label htmlFor='Numero'>Documento</label>
           <div className='inputs'>
+            <div className='input-group'>
+              <label htmlFor='name'>Nombre</label>
+              <input
+                type='text'
+                name='name'
+                onChange={e => setCardName(e.target.value)}
+                id='form-checkout__cardholderName'
+                placeholder='Jhon Doe'
+              />
+            </div>
+            <div className='input-group'>
+              <label htmlFor='month_card'>MM</label>
+              <IMaskInput
+                min={1}
+                max={12}
+                mask='00'
+                placeholder='05'
+                maxLength={2}
+                onChange={e => setCardExpirationMonth(parseInt(e.target.value))}
+                name='month_card'
+                id='form-checkout__cardExpirationMonth'
+              />
+            </div>
+            <div className='input-group'>
+              <label htmlFor='year_card'>AA</label>
+              <IMaskInput
+                min={24}
+                mask='00'
+                placeholder='30'
+                maxLength={2}
+                onChange={e => setCardExpirationYear(parseInt(e.target.value))}
+                name='year_card'
+                id='form-checkout__cardExpirationYear'
+              />
+            </div>
+            <div className='input-group'>
+              <label htmlFor='code_card'>CCV</label>
+              <IMaskInput
+                min={100}
+                mask='0000'
+                placeholder='1234'
+                maxLength={4}
+                onChange={e => setSecurityCode(parseInt(e.target.value))}
+                name='code_card'
+                id='form-checkout__securityCode'
+              />
+            </div>
+          </div>
+          <div className='input-group'>
+            <label htmlFor=''>Cuotas</label>
             <select
-              name='identificationType'
-              id='form-form-checkout__identificationType'
+              name='installments'
+              id='form-checkout__installments'
+              onChange={e => setInstallments(parseInt(e.target.value))}
             >
-              {dniTypes?.map((type, key) => (
-                <option
-                  key={key}
-                  onClick={() => {
-                    setIdentification(type)
-                  }}
-                >
-                  {type.name}
+              {listPayerCost?.map((payerCost, key) => (
+                <option key={key} value={payerCost.installments}>
+                  {payerCost.recommended_message}
                 </option>
               ))}
             </select>
-            <input
-              type={identification?.type}
-              minLength={identification?.min_length}
-              maxLength={identification?.max_length}
-              onChange={e => setIdentificationNumber(parseInt(e.target.value))}
-              name='identificationNumber'
-              className='input-checkout numero-dni'
-              id='form-checkout__identificationNumber'
-              required
-            />
           </div>
-        </div>
-        <button
-          type='submit'
-          id='form-checkout__submit'
-          className='pay-purchase'
-          disabled={enablePayment}
-        >
-          PAGAR
-        </button>
-      </form>
-    </div>
+          <div className='input-group'>
+            <label htmlFor='Numero'>Documento</label>
+            <div className='inputs'>
+              <select
+                name='identificationType'
+                id='form-form-checkout__identificationType'
+              >
+                {dniTypes?.map((type, key) => (
+                  <option
+                    key={key}
+                    onClick={() => {
+                      setIdentification(type)
+                    }}
+                  >
+                    {type.name}
+                  </option>
+                ))}
+              </select>
+              <IMaskInput
+                min={identification?.min_length}
+                max={identification?.max_length}
+                mask='00000000'
+                placeholder='11222333'
+                minLength={identification?.min_length}
+                maxLength={identification?.max_length}
+                onChange={e =>
+                  setIdentificationNumber(parseInt(e.target.value))
+                }
+                name='identificationNumber'
+                className='input-checkout numero-dni'
+                id='form-checkout__identificationNumber'
+                required
+              />
+            </div>
+          </div>
+          <button
+            type='submit'
+            id='form-checkout__submit'
+            className='pay-purchase'
+            disabled={enablePayment}
+          >
+            PAGAR
+          </button>
+        </form>
+      </div>
+    </>
   )
 }
 

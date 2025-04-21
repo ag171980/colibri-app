@@ -1,12 +1,41 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
 
 import { images } from '../../../../utils/functions/images'
 
 import './MercadoPago.css'
+import { useSelector } from 'react-redux'
+import { paymentService } from '../../../../services/payment.service'
+import Loader from '../../../../components/Loader/Loader'
+import LoaderBtn from '../../../../components/LoaderBtn/LoaderBtn'
 const MercadoPago = ({ setMethodActual }) => {
+  const state = useSelector(state => state)
+
   const [preferenceId, setPreferenceId] = useState('')
+  const [statePreference, setStatePreference] = useState(false)
+
+  const createPreference = async () => {
+    if (state.cart && state.buyer && state.buyer.buyer) {
+      const response = await paymentService.getCreatePreferenceId(
+        state.cart.items,
+        state.buyer.buyer
+      )
+      setPreferenceId(response.id)
+      setStatePreference(true)
+    }
+  }
+
+  if (!statePreference) {
+    createPreference()
+  }
+
+  useEffect(() => {
+    if (process.env.REACT_APP_PUBLIC_KEY) {
+      initMercadoPago(process.env.REACT_APP_PUBLIC_KEY, { locale: 'es-AR' })
+    }
+  }, [])
+
   return (
     <div className='payment-detail'>
       <button onClick={() => setMethodActual(undefined)}>
@@ -30,8 +59,10 @@ const MercadoPago = ({ setMethodActual }) => {
         <img src={images.LogoPagoFacil} alt='' />
         <img src={images.LogoRapiPago} alt='' />
       </div>
-      {preferenceId && (
+      {preferenceId ? (
         <Wallet initialization={{ preferenceId: preferenceId }} />
+      ) : (
+        <LoaderBtn />
       )}
     </div>
   )

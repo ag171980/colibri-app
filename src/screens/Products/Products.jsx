@@ -59,7 +59,10 @@ const Products = () => {
   }
 
   const getProducts = async () => {
-    const response = await productService.getAllProducts(pageActual, process.env.REACT_APP_CANT_PRODUCTS)
+    const response = await productService.getAllProducts(
+      pageActual,
+      process.env.REACT_APP_CANT_PRODUCTS
+    )
     if (response.status === 200) {
       setProducts(response.data.productos)
       setPages(response.data.cantPaginas)
@@ -83,7 +86,9 @@ const Products = () => {
       setLoader(true)
     }, 800)
   }
-
+  useEffect(() => {
+    document.title = 'Productos - Colibri Premium'
+  }, [])
   useEffect(() => {
     // hacer consulta a la base de datos con estos productos en esta pagina.
 

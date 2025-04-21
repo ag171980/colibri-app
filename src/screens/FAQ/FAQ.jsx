@@ -23,6 +23,7 @@ const FAQ = () => {
   }
 
   useEffect(() => {
+    document.title = 'Preguntas Frecuentes - Colibri Premium'
     getFaqs()
   }, [])
 

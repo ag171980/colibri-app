@@ -9,6 +9,7 @@
 }
 
 .payment-detail .pay-form .input-group {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -23,6 +24,13 @@
   font-weight: 600;
   padding: 8px 0;
   font-size: 18px;
+}
+
+.payment-detail .pay-form .input-group img {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  object-fit: cover;
 }
 
 .payment-detail .pay-form .input,
@@ -53,6 +61,11 @@
   justify-content: space-between;
   width: 100%;
 }
+
+.payment-detail .pay-form .error-input {
+  border: 1px solid red;
+}
+
 .payment-detail .pay-form .inputs .input-group {
   width: 20%;
 }
@@ -72,6 +85,22 @@
 .payment-detail .pay-form .inputs .input-group:nth-child(3) {
   width: 15%;
 }
+
+.payment-detail .pay-form .pay-purchase {
+  margin: 20px 0 10px;
+  background-color: #00a87a;
+  color: white;
+  padding: 13px 18px;
+  width: 120px;
+  border-radius: 15px;
+  border: 1px solid #00a87a;
+  font-family: 'Carrois Gothic', sans-serif;
+  font-size: 19px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.17);
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.17);
+  -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.17);
+}
+
 #cardNumberSecureField_container,
 #securityCodeSecureField_container,
 #expirationMonthSecureField_container,

@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
 const SelectProvinces = ({ setProvince }) => {
+  const { buyer } = useSelector(state => state.buyer)
   const provinces = [
     'Buenos Aires',
     'CABA',
@@ -27,17 +29,22 @@ const SelectProvinces = ({ setProvince }) => {
     'Santa Cruz',
     'Tierra del Fuego'
   ]
+
+  useEffect(() => {
+    setProvince(buyer.province)
+  }, [])
   return (
     <select
-      onChange={e => {
-        console.log(e.target.value)
-
-        setProvince(e.target.value)
-      }}
+      onChange={e => setProvince(e.target.value)}
       className='province'
       name='province'
       id='province'
     >
+      {buyer.province && (
+        <option value={buyer.province}>
+          {buyer.province}
+        </option>
+      )}
       {provinces.sort().map((province, key) => (
         <option key={key} value={province}>
           {province}

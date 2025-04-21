@@ -62,6 +62,9 @@ const Product = () => {
   useEffect(() => {
     getProductById()
   }, [])
+  useEffect(() => {
+    document.title = `${product?.nombre} - Colibri Premium`
+  }, [product])
   return (
     <>
       {alert && <CustomAlert alert={alert} />}

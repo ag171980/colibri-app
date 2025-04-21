@@ -24,6 +24,7 @@ const Index = () => {
   const [, setProductsOriginal] = useState([])
 
   useEffect(() => {
+    document.title = 'Inicio - Colibri Premium'
     async function fetchData () {
       const response = await productService.getAllProducts(
         1,

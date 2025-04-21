@@ -37,10 +37,15 @@ const buyerSlice = createSlice({
       state.buyer.numberPhone = dataBuyer.numberPhone
 
       sessionStorage.setItem('buyer', JSON.stringify(state.buyer))
+    },
+    clearBuyer: state => {
+      state.buyer = initial
+
+      sessionStorage.removeItem('buyer')
     }
   }
 })
 
-export const { saveData } = buyerSlice.actions
+export const { saveData, clearBuyer } = buyerSlice.actions
 
 export default buyerSlice.reducer

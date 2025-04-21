@@ -6,12 +6,17 @@ import Products from '../screens/Products/Products'
 import Repair from '../screens/Repair/Repair'
 import FAQ from '../screens/FAQ/FAQ'
 import Checkout from '../screens/Checkout/Checkout'
+import Transferences from "../screens/Checkout/methods/Transferences/Transferences"
 import Product from '../screens/Product/Product'
 import Login from '../screens/Login/Login'
 import NotFound from '../screens/NotFound/NotFound'
 import HomeAdmin from '../screens/HomeAdmin/HomeAdmin'
 import CategoriesAdmin from '../screens/CategoriesAdmin/CategoriesAdmin'
-import Payment from '../screens/Payment/Payment'
+
+// Payments State
+import Approved from "../screens/States/Approved/Approved"
+import Pending from "../screens/States/Pending/Pending"
+import Refused from "../screens/States/Refused/Refused"
 export default function RouterPage () {
   return (
     <Router>
@@ -23,10 +28,14 @@ export default function RouterPage () {
         <Route path='/reparacion' element={<Repair />} />
         <Route path='/faq' element={<FAQ />} />
         <Route path='/checkout' element={<Checkout />} />
-        <Route path='/checkout/payment' element={<Payment />} />
+        <Route path='/checkout/transferencia' element={<Transferences />} />
         <Route path='/admin' element={<Login />} />
         <Route path='/admin/home' element={<HomeAdmin />} />
         <Route path='/admin/categorias' element={<CategoriesAdmin />} />
+
+        <Route path='/pago/aprobado' element={<Approved />} />
+        <Route path='/pago/pendiente' element={<Pending />} />
+        <Route path='/pago/rechazado' element={<Refused />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </Router>

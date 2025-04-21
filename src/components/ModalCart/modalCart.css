@@ -19,7 +19,7 @@
   min-width: 600px;
   display: flex;
   flex-direction: column;
-  position: fixed;
+  position: relative;
   right: -600px;
   transition: 0.5s all;
 }
